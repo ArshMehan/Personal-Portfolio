@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsh Mehan | Robotics & Mechanical Engineering Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --accent: #3b82f6;
+        }
+        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--light); color: var(--dark); line-height: 1.6; }
+        nav { background: white; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; }
+        .hero { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; padding: 0 20px; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
+        .container { width: 90%; max-width: 1100px; margin: auto; padding: 60px 0; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; transition: transform 0.3s ease; }
+        .card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        .card h3 { color: var(--primary); margin-top: 0; }
+        .tag { display: inline-block; background: #dbeafe; color: #1e40af; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .btn { background: var(--primary); color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .btn:hover { background: #1d4ed8; }
+        footer { text-align: center; padding: 40px; background: #f1f5f9; color: #64748b; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div style="font-weight: bold; font-size: 1.2rem;">AM.</div>
+    <div class="nav-links">
+        <a href="#projects" style="margin-left: 20px; text-decoration: none; color: inherit;">Projects</a>
+        <a href="#skills" style="margin-left: 20px; text-decoration: none; color: inherit;">Skills</a>
+        <a href="#contact" style="margin-left: 20px; text-decoration: none; color: inherit;">Contact</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>Arsh Mehan</h1>
+    <p style="font-size: 1.2rem; max-width: 700px;">Mechanical Programmer & Robotics Lead specializing in high-performance FTC systems and complex CAD iteration.</p>
+    <a href="#projects" class="btn" style="margin-top: 30px;">Explore Projects</a>
+</section>
+
+<div class="container" id="projects">
+    <h2 style="text-align: center; font-size: 2.5rem;">Project Showcase</h2>
+    
+    <div class="grid">
+        <div class="card">
+            <span class="tag">Flagship</span>
+            <h3>Into the Deep V3</h3>
+            <p>Advanced robot featuring a 5-DOF outtake subsystem, coaxial double arm, and master-sketched gearbox geometry.</p>
+            <ul>
+                <li>Optimized for sub-2s cycle times</li>
+                <li>Fully modeled wiring & wire management</li>
+                <li>Distance/Color sensor integration</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <span class="tag">Research</span>
+            <h3>Coaxial Swerve Drive</h3>
+            <p>A ground-up mechanical study on gear ratio optimization and RPM balancing for high-torque maneuverability.</p>
+            <ul>
+                <li>Developed using Master Sketching</li>
+                <li>Focused on compact assembly</li>
+                <li>RPM vs Torque balancing</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <span class="tag">Research</span>
+            <h3>Differential Swerve</h3>
+            <p>Intrinsic differential gear system study featuring complicated 3DP superstructures and ease-of-assembly focus.</p>
+        </div>
+
+        <div class="card">
+            <span class="tag">Competitive</span>
+            <h3>Centerstage Robot</h3>
+            <p>First implementation of custom sheet metal parts fabricated with a 3-axis CNC router.</p>
+        </div>
+    </div>
+</div>
+
+<section style="background: white; padding: 80px 0;" id="skills">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 50px;">Technical Toolkit</h2>
+        <div class="skills-grid">
+            <div class="card" style="box-shadow: none; background: #f8fafc;">
+                <h4>Design & FAB</h4>
+                <p>Onshape (Master Sketching), 3D Printing (FDM/SLA), CNC Routing, Laser Cutting.</p>
+            </div>
+            <div class="card" style="box-shadow: none; background: #f8fafc;">
+                <h4>Programming</h4>
+                <p>Java (FTC), OpenCV Pipelines, PID Control, Git/GitHub.</p>
+            </div>
+            <div class="card" style="box-shadow: none; background: #f8fafc;">
+                <h4>Theory</h4>
+                <p>Differential Systems, Planetary Gears, Linkage Optimization, Belt Reductions.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container" id="contact" style="text-align: center;">
+    <h2>Work Opportunities</h2>
+    <p>Currently seeking engineering collaborations and internship opportunities.</p>
+    <a href="mailto:your-email@example.com" class="btn">Send an Email</a>
+    <div style="margin-top: 40px; font-size: 1.5rem;">
+        <i class="fab fa-linkedin" style="margin: 0 15px; cursor: pointer;"></i>
+        <i class="fab fa-github" style="margin: 0 15px; cursor: pointer;"></i>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 Arsh Mehan. Designed for Engineering Excellence.</p>
+</footer>
+
+</body>
+</html>
