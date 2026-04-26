@@ -28,29 +28,31 @@
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         .card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); cursor: pointer; border: 1px solid #e2e8f0; transition: all 0.3s ease; }
         .card:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: 0 12px 30px rgba(37, 99, 235, 0.1); }
-        .card img { width: 100%; height: 220px; object-fit: cover; background: #f1f5f9; transition: 0.3s; }
+        .card img { width: 100%; height: 220px; object-fit: cover; background: #f1f5f9; }
         .card-content { padding: 25px; }
         .tag { background: #dbeafe; color: #1e40af; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
 
-        /* Project "Page" View */
+        /* Contact Section */
+        footer { background: var(--dark); color: white; padding: 80px 5% 40px; margin-top: 100px; text-align: center; }
+        .contact-container { max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 50px; }
+        .contact-item h4 { color: var(--primary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; font-size: 0.9rem; }
+        .contact-item p { margin: 0; font-size: 1.1rem; opacity: 0.9; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; font-size: 0.8rem; opacity: 0.5; }
+
+        /* Project Sub-Page */
         .project-view { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 2000; overflow-y: auto; }
         .project-view.active { display: block; animation: slideIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
         .back-nav { background: white; padding: 15px 5%; position: sticky; top: 0; border-bottom: 1px solid #eee; display: flex; align-items: center; z-index: 2001; }
-        .back-btn { background: var(--dark); color: white; border: none; padding: 10px 24px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 1rem; }
-        
+        .back-btn { background: var(--dark); color: white; border: none; padding: 10px 24px; border-radius: 8px; cursor: pointer; font-weight: 600; }
         .detail-header img { width: 100%; max-height: 550px; object-fit: contain; background: #0f172a; display: block; }
         .detail-body { max-width: 900px; margin: auto; padding: 50px 20px; }
         .tech-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 50px; margin-top: 40px; }
-        
-        .btn { background: var(--primary); color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.2s; }
-        .btn:hover { background: #1d4ed8; transform: scale(1.02); }
+        .btn { background: var(--primary); color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-block; }
 
         @keyframes slideIn { from { transform: translateY(100vh); } to { transform: translateY(0); } }
-        
         @media (max-width: 768px) { 
             .about-section { grid-template-columns: 1fr; text-align: center; } 
             .tech-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -58,39 +60,59 @@
 
 <nav>
     <div style="font-weight: 800; font-size: 1.5rem; color: var(--primary);">AM.</div>
-    <div style="font-weight: 600; color: #64748b;">Portfolio 2026</div>
+    <div style="font-weight: 600; color: #64748b;">Engineering & Robotics</div>
 </nav>
 
 <div id="main-grid">
     <section class="hero">
         <h1 style="font-size: 3rem; margin-bottom: 10px;">Engineering Portfolio</h1>
-        <p style="font-size: 1.2rem; opacity: 0.9;">Mechanical Design & Robotics Analysis</p>
+        <p style="font-size: 1.2rem; opacity: 0.9;">Technical logs and mechanical analysis</p>
     </section>
 
     <div class="container">
         <section class="about-section">
             <div style="text-align: center;">
-                <div style="width: 140px; height: 140px; background: linear-gradient(135deg, #3b82f6, #1e40af); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; color: white; font-weight: 800; box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);">AM</div>
+                <div style="width: 140px; height: 140px; background: linear-gradient(135deg, #3b82f6, #1e40af); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; color: white; font-weight: 800;">AM</div>
                 <h3 style="margin: 0; font-size: 1.5rem;">Arsh Mehan</h3>
                 <p style="color: #2563eb; font-weight: 700; margin: 5px 0;">Mechanical Designer</p>
             </div>
             <div class="about-text">
-                <h2>Precision in Performance & Design</h2>
+                <h2>About Me</h2>
                 <p>
-                    I am a mechanical designer and roboticist focused on creating high-efficiency systems through iterative CAD modeling and physical prototyping. My approach is defined by the discipline of a competitive violist—blending the technical rigor of orchestral performance with the creative problem-solving required for advanced robotics.
+                    I am a mechanical designer focused on creating high-efficiency systems through iterative CAD modeling and physical prototyping. My approach is defined by the discipline of a competitive violist—blending technical rigor with the creative problem-solving required for advanced robotics.
                 </p>
                 <div class="stats-grid">
                     <div class="stat-item"><strong>14</strong><span>Technical Logs</span></div>
-                    <div class="stat-item"><strong>Onshape</strong><span>CAD Workflow</span></div>
-                    <div class="stat-item"><strong>FTC</strong><span>Hardware Lead</span></div>
+                    <div class="stat-item"><strong>Onshape</strong><span>CAD Focus</span></div>
+                    <div class="stat-item"><strong>FTC</strong><span>Experience</span></div>
                 </div>
             </div>
         </section>
 
-        <h2 style="font-size: 2rem; margin-bottom: 30px; letter-spacing: -0.5px;">Technical Projects</h2>
-        <div class="grid" id="project-list">
-            </div>
+        <h2 style="font-size: 2rem; margin-bottom: 30px;">Technical Projects</h2>
+        <div class="grid" id="project-list"></div>
     </div>
+
+    <footer>
+        <h2 style="font-size: 2.5rem; margin-bottom: 40px;">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-item">
+                <h4>Email</h4>
+                <p>arshmehan@example.com</p>
+            </div>
+            <div class="contact-item">
+                <h4>Phone</h4>
+                <p>(123) 456-7890</p>
+            </div>
+            <div class="contact-item">
+                <h4>Location</h4>
+                <p>Plainsboro, New Jersey</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Arsh Mehan. All rights reserved. Built with precision and code.
+        </div>
+    </footer>
 </div>
 
 <div id="project-page" class="project-view">
@@ -102,16 +124,16 @@
     </div>
     <div class="detail-body">
         <span id="detail-tag" class="tag"></span>
-        <h1 id="detail-title" style="font-size: 2.8rem; margin: 15px 0; letter-spacing: -1px;"></h1>
+        <h1 id="detail-title" style="font-size: 2.8rem; margin: 15px 0;"></h1>
         <p id="detail-desc" style="font-size: 1.3rem; color: #475569; margin-bottom: 30px;"></p>
         
         <div class="tech-grid">
             <div>
-                <h3 style="border-bottom: 2px solid #f1f5f9; padding-bottom: 15px; color: var(--primary);">Technical Breakdown</h3>
-                <p id="detail-tech" style="white-space: pre-line; font-size: 1.1rem; color: #334155;"></p>
+                <h3 style="border-bottom: 2px solid #f1f5f9; padding-bottom: 15px;">Technical Breakdown</h3>
+                <p id="detail-tech" style="white-space: pre-line; font-size: 1.1rem;"></p>
             </div>
             <div>
-                <h3 style="border-bottom: 2px solid #f1f5f9; padding-bottom: 15px; color: var(--primary);">Resources</h3>
+                <h3 style="border-bottom: 2px solid #f1f5f9; padding-bottom: 15px;">Project Resources</h3>
                 <div id="cad-link-area"></div>
             </div>
         </div>
@@ -119,85 +141,55 @@
 </div>
 
 <script>
-    // COMPLETE PROJECT DATABASE - ALL SET TO .PNG
     const projects = [
-        { id: 'decode-v2', title: 'Decode Robot V2', tag: 'System Optimization', img: 'Screenshot 2026-04-20 230958.png', desc: 'A packaging study focused on mass centralization and COG reduction for competitive robotics.', tech: '• Housed 8 motors within the chassis base\n• Achieved a compact 12" x 13.5" footprint\n• Optimized for ultra-low profile clearance to improve intake speed.', link: null },
-        { id: 'decode-v1', title: 'Decode Robot V1', tag: 'Modular Design', img: 'Screenshot 2026-04-20 224836.png', desc: 'Experimental modular architecture designed for field maintenance and rapid iterative testing.', tech: '• Superstructure can be removed via 8 primary screws\n• Integrated dual-stage intake systems\n• First-generation turreted shooter implementation.', link: null },
-        { id: 'spur-pto', title: 'Spur Differential PTO', tag: 'Applied Mechanics', img: 'Screenshot 2026-04-20 224208.png', desc: 'Technical analysis of dynamic power distribution using a custom spur gear differential.', tech: '• Implementation of high-precision dowel pins for gear alignment\n• Modular shaft design to accommodate various motor types\n• Analyzed torque transfer efficiency during motor stalling.', link: 'https://cad.onshape.com/documents/d51b81b7b5242d13238d5f9c/w/1cc7b2cef94a6d49ef6814b1/e/ec7b4c799195e4597f4dd2ef' },
-        { id: 'ff-practice', title: 'FF Practice Bot', tag: 'Prototyping', img: 'Screenshot 2026-04-18 224554.png', desc: 'A development platform used to test coaxial turret stability and linear slide friction.', tech: '• Features a 5-DOF outtake subsystem\n• 6-wheel tank drive for maximum traction\n• Tested bare-motor belted reductions for weight optimization.', link: null },
-        { id: 'super-modular', title: 'Super Modular Drivetrain', tag: 'Efficiency Research', img: 'Screenshot 2026-04-20 221146.png', desc: 'An empirical study comparing belt-driven vs. planetary-driven transmission efficiency.', tech: '• Benchmarked performance across 800-1000 RPM ranges\n• Minimized transmission loss through precise belt tensioning\n• Low-profile motor packaging to lower COG.', link: 'https://cad.onshape.com/documents/a762d78dceac9b2eadaac582/w/4a5e7dc5b1c5d9c9cf3f7ade/e/c9b695e9dc026b50b541b51a' },
-        { id: 'itd-v3', title: 'Into the Deep V3', tag: 'Flagship Build', img: 'Screenshot 2026-04-20 202435.png', desc: 'High-fidelity assembly featuring a virtual four-bar linkage and coaxial kinematics.', tech: '• Detailed modeling of internal wire paths and cable management\n• Custom drop-down intake with complex funneling geometry\n• High-torque drive geared for climbing.', link: 'https://cad.onshape.com/documents/500e0b556027f584a0163ccc/w/6ee5606072da4702d9095a64/e/5865db44d45624407bc74789' },
-        { id: 'itd-v2', title: 'Into the Deep V2', tag: 'Kinematics', img: 'Screenshot 2026-04-19 220411.png', desc: 'A study on pitching linear extensions to maximize scoring reach while maintaining a low profile.', tech: '• 6-DOF outtake system with integrated sensors\n• 3D-line stringing path analysis for smooth extension\n• Optimized for a 1-week rapid prototype turnaround.', link: 'https://cad.onshape.com/documents/acfcfb5e789f9d1567fe2565/w/0edabab2052a78754d798648/e/5b55488c01ab4972398a8935' },
-        { id: 'itd-v1', title: 'Into the Deep V1', tag: 'Linkage Analysis', img: 'Screenshot 2026-04-20 200959.png', desc: 'Mechanical analysis of a Double Reverse Four-Bar mechanism using overcenter linkages.', tech: '• Optimized linkage geometry for maximum lifting torque\n• Active pivoting intake for varied game-piece orientation\n• Linkage-driven horizontal reach extension.', link: null },
-        { id: 'locking-mecanum', title: 'Locking Mecanum', tag: 'Experimental', img: 'Screenshot 2026-04-20 195752.png', desc: 'A custom planetary gearbox designed to toggle between holonomic and traction-drive modes.', tech: '• Custom-designed planetary wheel hubs\n• Integrated traction-lock mechanism for defense resistance\n• Explored dual-input RPM independence for steering.', link: 'https://cad.onshape.com/documents/288792bb3626321c94175cd8/w/b73be8bde34d489242e6aa53/e/fc395c62069a16d3302fc8d7' },
-        { id: 'coaxial-swerve', title: 'Coaxial Swerve Drive', tag: 'Advanced Research', img: 'Screenshot 2026-04-25 205851.png', desc: 'Complex master-sketching platform for optimizing coaxial swerve pod kinematics.', tech: '• Concentric shaft study (Hex vs Round shafting)\n• Optimized belt pathing using custom idler geometry\n• RPM balancing analysis for orientation control.', link: 'https://cad.onshape.com/documents/a5c8fcac7ec2f36807091e62/w/d628b2deadbf7ddc49ca9853/e/1167eec7910b8e92006cde84' },
-        { id: 'diff-swerve', title: 'Differential Swerve', tag: 'Transmission Study', img: 'Screenshot 2026-04-20 193233.png', desc: 'Mechanical deep-dive into intrinsic differential gear systems for holonomic movement.', tech: '• Fully decoupled orientation vs. drive speed logic\n• 3D-printed transmission housing for weight reduction\n• Structural analysis of swerve module stability.', link: null },
-        { id: 'centerstage', title: 'Centerstage Robot', tag: 'Competitive Design', img: 'Screenshot 2026-04-19 143825.png', desc: 'A competitive robot build utilizing professional CNC-routed sheet metal fabrication.', tech: '• Components designed specifically for 3-axis CNC routing\n• High-speed Mecanum chassis with custom belt tensioners\n• 3-DOF arm with computer vision integration.', link: null },
-        { id: 'powerplay', title: 'PowerPlay Robot', tag: 'Mechanical Systems', img: 'Screenshot 2026-04-18 231050.png', desc: 'Development of a bent steel sheet metal claw for precise game-piece manipulation.', tech: '• Iterative 3D printed prototypes to test grip geometry\n• Final build using laser-cut and bent steel\n• Lined with compliant rubber for high-friction contact.', link: null },
-        { id: 'ff-foundation', title: 'Freight Frenzy Robot', tag: 'Foundational', img: 'Screenshot 2026-04-20 223506.png', desc: 'Inaugural CAD project establishing foundational skills in assembly and kinematics.', tech: '• Holonomic drivetrain modeling and analysis\n• Initial vision pipeline integration for autonomous tasks\n• First-time use of custom 3D printed structural parts.', link: null }
+        { id: 'decode-v2', title: 'Decode Robot V2', tag: 'System Optimization', img: 'Screenshot 2026-04-20 230958.png', desc: 'Mass centralization study prioritizing lower center of gravity.', tech: '• Housed 8 motors in chassis base\n• 12"x13.5" footprint\n• Optimized low-profile clearance.', link: null },
+        { id: 'decode-v1', title: 'Decode Robot V1', tag: 'Modular Design', img: 'Screenshot 2026-04-20 224836.png', desc: 'Modular architecture for rapid assembly and field service.', tech: '• Subsystem removal via 8 screws\n• Dual-intake integration.', link: null },
+        { id: 'spur-pto', title: 'Spur Differential PTO', tag: 'Applied Mechanics', img: 'Screenshot 2026-04-20 224208.png', desc: 'Technical analysis of power take-off systems using spur gear differentials.', tech: '• Precision dowel implementation\n• Torque transfer analysis.', link: 'https://cad.onshape.com/documents/d51b81b7b5242d13238d5f9c/w/1cc7b2cef94a6d49ef6814b1/e/ec7b4c799195e4597f4dd2ef' },
+        { id: 'ff-practice', title: 'FF Practice Bot', tag: 'Prototyping', img: 'Screenshot 2026-04-18 224554.png', desc: 'Platform for coaxial turret and slide integration research.', tech: '• 5-DOF outtake\n• 6-wheel tank drive.', link: null },
+        { id: 'super-modular', title: 'Super Modular Drivetrain', tag: 'Efficiency Research', img: 'Screenshot 2026-04-20 221146.png', desc: 'Study on belt vs. planetary transmission efficiency.', tech: '• Benchmarked 800-1000 RPM range\n• Minimized transmission loss.', link: 'https://cad.onshape.com/documents/a762d78dceac9b2eadaac582/w/4a5e7dc5b1c5d9c9cf3f7ade/e/c9b695e9dc026b50b541b51a' },
+        { id: 'itd-v3', title: 'Into the Deep V3', tag: 'Flagship Build', img: 'Screenshot 2026-04-20 202435.png', desc: 'Flagship assembly featuring virtual four-bar linkage.', tech: '• Detailed internal wire paths\n• High-torque climbing drivetrain.', link: 'https://cad.onshape.com/documents/500e0b556027f584a0163ccc/w/6ee5606072da4702d9095a64/e/5865db44d45624407bc74789' },
+        { id: 'itd-v2', title: 'Into the Deep V2', tag: 'Kinematics', img: 'Screenshot 2026-04-19 220411.png', desc: 'Study on pitching linear extensions to maximize scoring reach.', tech: '• 6-DOF system\n• 3D-line stringing path analysis.', link: 'https://cad.onshape.com/documents/acfcfb5e789f9d1567fe2565/w/0edabab2052a78754d798648/e/5b55488c01ab4972398a8935' },
+        { id: 'itd-v1', title: 'Into the Deep V1', tag: 'Linkage Analysis', img: 'Screenshot 2026-04-20 200959.png', desc: 'Double Reverse Four-Bar mechanism using overcenter linkages.', tech: '• Optimized for maximum lifting torque\n• Active pivoting intake.', link: null },
+        { id: 'locking-mecanum', title: 'Locking Mecanum', tag: 'Experimental', img: 'Screenshot 2026-04-20 195752.png', desc: 'Custom planetary gearbox to toggle between holonomic and traction modes.', tech: '• Planetary wheel hubs\n• Traction-lock mechanism.', link: 'https://cad.onshape.com/documents/288792bb3626321c94175cd8/w/b73be8bde34d489242e6aa53/e/fc395c62069a16d3302fc8d7' },
+        { id: 'coaxial-swerve', title: 'Coaxial Swerve Drive', tag: 'Advanced Research', img: 'Screenshot 2026-04-25 205851.png', desc: 'Master-sketching platform for coaxial swerve pod kinematics.', tech: '• Concentric shaft study\n• Custom idler belt paths.', link: 'https://cad.onshape.com/documents/a5c8fcac7ec2f36807091e62/w/d628b2deadbf7ddc49ca9853/e/1167eec7910b8e92006cde84' },
+        { id: 'diff-swerve', title: 'Differential Swerve', tag: 'Transmission Study', img: 'Screenshot 2026-04-20 193233.png', desc: 'Intrinsic differential gear system study for holonomic movement.', tech: '• 3D-printed transmission housing\n• Structural stability analysis.', link: null },
+        { id: 'centerstage', title: 'Centerstage Robot', tag: 'Competitive Design', img: 'Screenshot 2026-04-19 143825.png', desc: 'Robot build utilizing professional CNC-routed fabrication.', tech: '• CNC-routed sheet metal components\n• 3-DOF arm integration.', link: null },
+        { id: 'powerplay', title: 'PowerPlay Robot', tag: 'Mechanical Systems', img: 'Screenshot 2026-04-18 231050.png', desc: 'Development of a bent steel sheet metal claw.', tech: '• Final build using laser-cut steel\n• Compliant rubber linings.', link: null },
+        { id: 'ff-foundation', title: 'Freight Frenzy Robot', tag: 'Foundational', img: 'Screenshot 2026-04-20 223506.png', desc: 'Inaugural CAD project establishing core competencies.', tech: '• Holonomic drivetrain kinematics\n• OpenCV vision basics.', link: null }
     ];
 
-    // 1. GENERATE GRID CARDS
     const grid = document.getElementById('project-list');
     projects.forEach(p => {
         const card = document.createElement('div');
         card.className = 'card';
-        card.innerHTML = `
-            <img src="${p.img}" loading="lazy">
-            <div class="card-content">
-                <span class="tag">${p.tag}</span>
-                <h3>${p.title}</h3>
-            </div>
-        `;
+        card.innerHTML = `<img src="${p.img}" loading="lazy"><div class="card-content"><span class="tag">${p.tag}</span><h3>${p.title}</h3></div>`;
         card.onclick = () => navigateTo(p.id);
         grid.appendChild(card);
     });
 
-    // 2. NAVIGATION LOGIC
     function navigateTo(id) {
         const project = projects.find(p => p.id === id);
         if (!project) return;
-
-        // Populate Detail View
         document.getElementById('detail-title').innerText = project.title;
         document.getElementById('detail-img').src = project.img;
         document.getElementById('detail-tag').innerText = project.tag;
         document.getElementById('detail-desc').innerText = project.desc;
         document.getElementById('detail-tech').innerText = project.tech;
-        
         const linkArea = document.getElementById('cad-link-area');
-        if (project.link) {
-            linkArea.innerHTML = `<a href="${project.link}" class="btn" target="_blank">View Onshape CAD</a>`;
-        } else {
-            linkArea.innerHTML = '<p style="color:#94a3b8; font-style:italic;">CAD Link restricted or confidential.</p>';
-        }
-
-        // Action: Show Page
+        linkArea.innerHTML = project.link ? `<a href="${project.link}" class="btn" target="_blank">View Onshape CAD</a>` : '<p style="color:#94a3b8; font-style:italic;">CAD Link restricted.</p>';
         window.location.hash = id;
         document.getElementById('project-page').classList.add('active');
-        document.body.style.overflow = 'hidden'; // Freeze background scroll
+        document.body.style.overflow = 'hidden';
     }
 
     function goBack() {
         window.location.hash = '';
         document.getElementById('project-page').classList.remove('active');
-        document.body.style.overflow = 'auto'; // Restore scroll
+        document.body.style.overflow = 'auto';
     }
 
-    // 3. BROWSER HISTORY SYNC (Option 1 Behavior)
-    window.onhashchange = function() {
-        if (!window.location.hash) {
-            goBack();
-        } else {
-            navigateTo(window.location.hash.replace('#', ''));
-        }
-    };
-
-    // Auto-load project if URL has a hash (e.g. site.com/#decode-v2)
-    if (window.location.hash) {
-        navigateTo(window.location.hash.replace('#', ''));
-    }
+    window.onhashchange = () => { if (!window.location.hash) goBack(); };
+    if (window.location.hash) navigateTo(window.location.hash.replace('#', ''));
 </script>
-
 </body>
 </html>
