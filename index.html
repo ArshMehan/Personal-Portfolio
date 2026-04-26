@@ -7,194 +7,235 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root { --primary: #2563eb; --dark: #0f172a; --light: #f8fafc; --accent: #3b82f6; }
-        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--light); color: var(--dark); line-height: 1.6; scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--light); color: var(--dark); line-height: 1.6; }
+        
+        /* Navigation */
         nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .hero { height: 40vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; text-align: center; padding: 0 20px; }
-        .hero h1 { font-size: 3.5rem; margin: 0; letter-spacing: -1px; }
+        
+        /* Hero */
+        .hero { height: 35vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; text-align: center; padding: 0 20px; }
+        .hero h1 { font-size: 3rem; margin: 0; letter-spacing: -1px; }
+
+        /* Project Grid */
         .container { width: 90%; max-width: 1200px; margin: auto; padding: 60px 0; }
-        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; font-weight: 800; color: var(--dark); }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        .card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 25px rgba(0,0,0,0.07); display: flex; flex-direction: column; border: 1px solid #e2e8f0; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        
+        .card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); cursor: pointer; border: 1px solid #e2e8f0; transition: transform 0.3s ease; }
         .card:hover { transform: translateY(-8px); border-color: var(--primary); }
-        .card img { width: 100%; height: 260px; object-fit: cover; background: #e2e8f0; border-bottom: 1px solid #f1f5f9; }
-        .card-content { padding: 25px; flex-grow: 1; }
-        .tag { background: #dbeafe; color: #1e40af; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; display: inline-block; }
-        .card h3 { margin: 0 0 12px 0; font-size: 1.5rem; }
-        .card p { font-size: 0.95rem; color: #64748b; margin-bottom: 15px; }
-        .links { padding: 20px; border-top: 1px solid #f1f5f9; display: flex; flex-wrap: wrap; gap: 10px; background: #fafafa; }
-        .btn { background: var(--primary); color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 700; transition: 0.2s; }
-        footer { background: var(--dark); color: white; padding: 60px 20px; text-align: center; }
+        .card img { width: 100%; height: 220px; object-fit: cover; }
+        .card-content { padding: 20px; }
+        .tag { background: #dbeafe; color: #1e40af; padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
+        .card h3 { margin: 0 0 10px 0; font-size: 1.3rem; }
+
+        /* Deep Dive Modal (Hidden by Default) */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(8px); z-index: 2000; overflow-y: auto; padding: 40px 20px; }
+        .modal-content { background: white; max-width: 900px; margin: auto; border-radius: 24px; overflow: hidden; position: relative; animation: slideUp 0.4s ease; }
+        .modal-header img { width: 100%; max-height: 450px; object-fit: contain; background: #0f172a; }
+        .modal-body { padding: 40px; }
+        .close-btn { position: absolute; top: 20px; right: 20px; background: white; border: none; font-size: 2rem; cursor: pointer; border-radius: 50%; width: 50px; height: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 10; }
+        
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .tech-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
+        .tech-specs h4 { color: var(--primary); margin-bottom: 10px; border-bottom: 2px solid #f1f5f9; padding-bottom: 5px; }
+        
+        .btn { background: var(--primary); color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-block; margin-top: 20px; }
+
+        footer { background: var(--dark); color: white; padding: 40px; text-align: center; }
     </style>
 </head>
 <body>
 
 <nav>
     <div style="font-weight: 800; font-size: 1.5rem; color: var(--primary);">AM.</div>
-    <div>
-        <a href="#projects" style="margin-right: 25px; text-decoration: none; color: var(--dark); font-weight: 600;">Portfolio</a>
-        <a href="mailto:arshmehan@gmail.com" class="btn">Get In Touch</a>
-    </div>
+    <a href="mailto:arshmehan@gmail.com" style="text-decoration:none; color: white; background:var(--primary); padding: 8px 16px; border-radius:8px;">Contact</a>
 </nav>
 
 <section class="hero">
-    <h1>Engineering Log</h1>
-    <p style="font-size: 1.2rem; opacity: 0.9; margin-top: 15px;">A Chronological Evolution of Mechanical Design & Robotics</p>
+    <h1>Engineering Portfolio</h1>
+    <p>Click any project for a technical deep dive</p>
 </section>
 
-<div class="container" id="projects">
+<div class="container">
     <div class="grid">
 
-        <div class="card">
-            <img src="Screenshot 2026-04-20 230958.png" alt="Decode V2 Drivetrain">
+        <div class="card" onclick="openModal('Decode V2', 'Screenshot 2026-04-20 230958.png', 'System Optimization', 'Advanced packaging study focusing on mass centralization and COG reduction.', 'Housed 8 motors within the chassis base; achieved 12x13.5 inch footprint; optimized for low-profile clearance.', 'N/A')">
+            <img src="Screenshot 2026-04-20 230958.png">
             <div class="card-content">
                 <span class="tag">System Optimization</span>
                 <h3>Decode Robot V2</h3>
-                <p>An advanced packaging study focused on mass centralization. By integrating all eight motors into the chassis base, this iteration achieved a significantly lower center of gravity while maintaining a compact 12"x13.5" footprint.</p>
             </div>
         </div>
 
-        <div class="card">
-            <img src="Screenshot 2026-04-20 224836.png" alt="Decode V1 Superstructure">
+        <div class="card" onclick="openModal('Decode V1', 'Screenshot 2026-04-20 224836.png', 'Modular Design', 'High-fidelity modular architecture designed for rapid field maintenance.', 'Superstructure removal via 8 primary screws; integrated dual-intake systems; turreted shooter prototype.', 'N/A')">
+            <img src="Screenshot 2026-04-20 224836.png">
             <div class="card-content">
                 <span class="tag">Modular Design</span>
                 <h3>Decode Robot V1</h3>
-                <p>The inaugural superstructure project prioritizing field serviceability. This design featured a modular architecture where major subsystems could be fully detached via eight primary mounting screws for rapid maintenance.</p>
             </div>
         </div>
 
-        <div class="card">
-            <img src="Screenshot 2026-04-20 224208.png" alt="Spur PTO System">
+        <div class="card" onclick="openModal('Spur Differential PTO', 'Screenshot 2026-04-20 224208.png', 'Applied Mechanics', 'Technical study on dynamic power distribution using spur gear differentials.', 'Implementation of precision dowels; modular shaft variety; analyzed torque transfer during motor stalling.', 'https://cad.onshape.com/documents/d51b81b7b5242d13238d5f9c/w/1cc7b2cef94a6d49ef6814b1/e/ec7b4c799195e4597f4dd2ef')">
+            <img src="Screenshot 2026-04-20 224208.png">
             <div class="card-content">
                 <span class="tag">Applied Mechanics</span>
                 <h3>Spur Differential PTO</h3>
-                <p>A Power Take-Off system leveraging spur differentials to dynamically distribute torque. This study explored mechanical stalling and counter-rotation, incorporating custom precision dowels and modular shaft assemblies.</p>
-            </div>
-            <div class="links">
-                <a href="https://cad.onshape.com/documents/d51b81b7b5242d13238d5f9c/w/1cc7b2cef94a6d49ef6814b1/e/ec7b4c799195e4597f4dd2ef" class="btn" target="_blank">View Assembly</a>
             </div>
         </div>
 
-        <div class="card">
-            <img src="Screenshot 2026-04-18 224554.png" alt="FF Practice Bot">
+        <div class="card" onclick="openModal('Freight Frenzy Practice Bot', 'Screenshot 2026-04-18 224554.png', 'Prototyping', 'An experimental platform for coaxial turret and slide integration.', '5-DOF outtake system; 6-wheel tank drive; tested bare-motor belted reductions for weight reduction.', 'N/A')">
+            <img src="Screenshot 2026-04-18 224554.png">
             <div class="card-content">
                 <span class="tag">Prototyping</span>
                 <h3>FF Practice Bot</h3>
-                <p>A high-mobility research platform exploring the integration of a coaxial turret with a 5-DOF outtake. This project tested bare-motor belted reductions to evaluate weight distribution and mechanical response times.</p>
             </div>
         </div>
 
-        <div class="card">
-            <img src="Screenshot 2026-04-20 221146.png" alt="Super Modular Drivetrain">
+        <div class="card" onclick="openModal('Super Modular Drivetrain', 'Screenshot 2026-04-20 221146.png', 'Efficiency Research', 'Empirical study on belt vs. planetary transmission efficiency.', 'Compact layout testing 800-1000 RPM ranges; minimized transmission loss; ultra-narrow wheel base.', 'https://cad.onshape.com/documents/a762d78dceac9b2eadaac582/w/4a5e7dc5b1c5d9c9cf3f7ade/e/c9b695e9dc026b50b541b51a')">
+            <img src="Screenshot 2026-04-20 221146.png">
             <div class="card-content">
                 <span class="tag">Efficiency Research</span>
                 <h3>Super Modular Drivetrain</h3>
-                <p>An empirical study comparing high-RPM belt drive efficiency against traditional planetary gearboxes. Designed for an ultra-compact footprint, the system was tested in the 800-1000 RPM range.</p>
-            </div>
-            <div class="links">
-                <a href="https://cad.onshape.com/documents/a762d78dceac9b2eadaac582/w/4a5e7dc5b1c5d9c9cf3f7ade/e/c9b695e9dc026b50b541b51a" class="btn" target="_blank">View CAD</a>
             </div>
         </div>
 
-        <div class="card">
-            <img src="Screenshot 2026-04-20 202435.png" alt="ITD V3 Final Design">
+        <div class="card" onclick="openModal('Into the Deep V3', 'Screenshot 2026-04-20 202435.png', 'Flagship Build', 'Virtual four-bar linkage system with coaxial double-arm kinematics.', 'Modeled internal wiring paths; high-torque 6-wheel tank drive; drop-down intake with complex funneling.', 'https://cad.onshape.com/documents/500e0b556027f584a0163ccc/w/6ee5606072da4702d9095a64/e/5865db44d45624407bc74789')">
+            <img src="Screenshot 2026-04-20 202435.png">
             <div class="card-content">
                 <span class="tag">Flagship Build</span>
                 <h3>Into the Deep V3</h3>
-                <p>A flagship system featuring a coaxial double-arm assembly acting as a virtual four-bar linkage. This iteration prioritized technical fidelity, including full internal wire routing and COG balancing for a 6-wheel tank drive.</p>
-            </div>
-            <div class="links">
-                <a href="https://cad.onshape.com/documents/500e0b556027f584a0163ccc/w/6ee5606072da4702d9095a64/e/5865db44d45624407bc74789" class="btn" target="_blank">View CAD</a>
             </div>
         </div>
 
-        <div class="card">
-            <img src="Screenshot 2026-04-19 220411.png" alt="ITD V2 Linear Extension">
+        <div class="card" onclick="openModal('Into the Deep V2', 'Screenshot 2026-04-19 220411.png', 'Kinematics', 'Kinematic study on pitching linear extensions for low-profile scoring.', '6-DOF outtake; 3D-line stringing paths; optimized for 1-week rapid prototype turnaround.', 'https://cad.onshape.com/documents/acfcfb5e789f9d1567fe2565/w/0edabab2052a78754d798648/e/5b55488c01ab4972398a8935')">
+            <img src="Screenshot 2026-04-19 220411.png">
             <div class="card-content">
                 <span class="tag">Kinematics</span>
                 <h3>Into the Deep V2</h3>
-                <p>A kinematic study on pitching linear extensions. This project refined the 6-DOF outtake system with a focus on simplified packaging and rapid motor repair accessibility without compromising the center of gravity.</p>
-            </div>
-            <div class="links">
-                <a href="https://cad.onshape.com/documents/acfcfb5e789f9d1567fe2565/w/0edabab2052a78754d798648/e/5b55488c01ab4972398a8935" class="btn" target="_blank">View CAD</a>
             </div>
         </div>
 
-        <div class="card">
-            <img src="Screenshot 2026-04-20 200959.png" alt="ITD V1 Linkage Study">
+        <div class="card" onclick="openModal('Into the Deep V1', 'Screenshot 2026-04-20 200959.png', 'Linkage Analysis', 'Double Reverse Four-Bar mechanism using overcenter linkages.', 'Optimized for high-torque hanging; double-arm pivoting active intake; linkage-driven horizontal extension.', 'N/A')">
+            <img src="Screenshot 2026-04-20 200959.png">
             <div class="card-content">
                 <span class="tag">Linkage Analysis</span>
                 <h3>Into the Deep V1</h3>
-                <p>Exploration of a Double Reverse Four-Bar (DR4B) mechanism. The design utilized overcenter linkages to maximize mechanical advantage and motor efficiency during high-torque hanging phases.</p>
             </div>
         </div>
 
-        <div class="card">
-            <img src="Screenshot 2026-04-20 195752.png" alt="Locking Mecanum Drivetrain">
+        <div class="card" onclick="openModal('Locking Mecanum', 'Screenshot 2026-04-20 195752.png', 'Experimental', 'Planetary gearbox system designed to toggle between holonomic and traction drive.', 'Custom planetary wheel hubs; traction-lock implementation; explored dual-input RPM independence.', 'https://cad.onshape.com/documents/288792bb3626321c94175cd8/w/b73be8bde34d489242e6aa53/e/fc395c62069a16d3302fc8d7')">
+            <img src="Screenshot 2026-04-20 195752.png">
             <div class="card-content">
                 <span class="tag">Experimental</span>
                 <h3>Locking Mecanum</h3>
-                <p>Innovative drivetrain research employing a dual-input planetary gearbox. This system allowed for a dynamic toggle between holonomic mobility and high-traction wheel locking for defensive stability.</p>
-            </div>
-            <div class="links">
-                <a href="https://cad.onshape.com/documents/288792bb3626321c94175cd8/w/b73be8bde34d489242e6aa53/e/fc395c62069a16d3302fc8d7" class="btn" target="_blank">View CAD</a>
             </div>
         </div>
 
-        <div class="card">
-            <img src="Screenshot 2026-04-25 205851.png" alt="Coaxial Swerve Module">
+        <div class="card" onclick="openModal('Coaxial Swerve Drive', 'Screenshot 2026-04-25 205851.png', 'Advanced Research', 'Master-sketching platform for optimizing coaxial swerve kinematics.', 'Analysis of RPM balancing; concentric shaft study (Hex vs. Round); belt pathing with custom idlers.', 'https://cad.onshape.com/documents/a5c8fcac7ec2f36807091e62/w/d628b2deadbf7ddc49ca9853/e/1167eec7910b8e92006cde84')">
+            <img src="Screenshot 2026-04-25 205851.png">
             <div class="card-content">
                 <span class="tag">Advanced Research</span>
                 <h3>Coaxial Swerve Drive</h3>
-                <p>A deep dive into swerve kinematics, focusing on the coaxial effect. This research platform utilized master-sketching to optimize gear ratios and RPM balancing for responsive vector-based movement.</p>
-            </div>
-            <div class="links">
-                <a href="https://cad.onshape.com/documents/a5c8fcac7ec2f36807091e62/w/d628b2deadbf7ddc49ca9853/e/1167eec7910b8e92006cde84" class="btn" target="_blank">Module A</a>
-                <a href="https://cad.onshape.com/documents/6ef85526b3c96cd3b0565958/w/37977f67ee13a3c89dafa0b3/e/a113334d323140da9f3b8920" class="btn" target="_blank">Module B</a>
             </div>
         </div>
 
-        <div class="card">
-            <img src="Screenshot 2026-04-20 193233.png" alt="Differential Swerve System">
+        <div class="card" onclick="openModal('Differential Swerve', 'Screenshot 2026-04-20 193233.png', 'Transmission Study', 'Compact intrinsic differential gear system for swerve steering.', 'Decoupled orientation vs. drive speed; 3D-printed transmission housing; swerve stability analysis.', 'N/A')">
+            <img src="Screenshot 2026-04-20 193233.png">
             <div class="card-content">
                 <span class="tag">Transmission Study</span>
                 <h3>Differential Swerve</h3>
-                <p>Analysis of an intrinsic differential transmission. This project investigated the complex gearing required to decouple wheel rotation from orientation within a compact 3D-printed superstructure.</p>
             </div>
         </div>
 
-        <div class="card">
-            <img src="Screenshot 2026-04-19 143825.png" alt="Centerstage Competition Robot">
+        <div class="card" onclick="openModal('Centerstage Robot', 'Screenshot 2026-04-19 143825.png', 'Competitive Design', 'Transition to CNC-routed sheet metal and professional fabrication.', '3-axis CNC router parts; belt-drive Mecanum chassis; 3-DOF arm with OpenCV vision integration.', 'N/A')">
+            <img src="Screenshot 2026-04-19 143825.png">
             <div class="card-content">
                 <span class="tag">Competitive Design</span>
                 <h3>Centerstage Robot</h3>
-                <p>The transition to professional fabrication methods. This robot utilized custom 3-axis CNC-routed sheet metal, a high-speed belt-drive Mecanum chassis, and integrated OpenCV vision pipelines.</p>
             </div>
         </div>
 
-        <div class="card">
-            <img src="Screenshot 2026-04-18 231050.png" alt="PowerPlay Claw System">
+        <div class="card" onclick="openModal('PowerPlay Robot', 'Screenshot 2026-04-18 231050.png', 'Mechanical Systems', 'Bent steel sheet metal claw development with rubber compliant lining.', 'Iterative 3D prototypes; finalized with steel construction; optimized claw geometry for scoring.', 'N/A')">
+            <img src="Screenshot 2026-04-18 231050.png">
             <div class="card-content">
                 <span class="tag">Mechanical Systems</span>
                 <h3>PowerPlay Robot</h3>
-                <p>Iterative development of a custom steel sheet metal end effector. Prototyped via 3D printing and finalized with bent-steel construction and compliant rubber linings for secure scoring.</p>
             </div>
         </div>
 
-        <div class="card">
-            <img src="Screenshot 2026-04-20 223506.png" alt="Freight Frenzy Robot">
+        <div class="card" onclick="openModal('Freight Frenzy Robot', 'Screenshot 2026-04-20 223506.png', 'Foundational', 'Inaugural CAD project establishing core robotics competencies.', 'Full assembly modeling basics; holonomic drivetrain kinematics; vision pipeline integration.', 'N/A')">
+            <img src="Screenshot 2026-04-20 223506.png">
             <div class="card-content">
                 <span class="tag">Foundational</span>
                 <h3>Freight Frenzy Robot</h3>
-                <p>The foundational project of this log. Established core competencies in full-assembly modeling, holonomic drivetrain kinematics, and the integration of vision-based navigation pipelines.</p>
             </div>
         </div>
 
     </div>
 </div>
 
+<div id="projectModal" class="modal">
+    <button class="close-btn" onclick="closeModal()">&times;</button>
+    <div class="modal-content">
+        <div class="modal-header">
+            <img id="modalImg" src="">
+        </div>
+        <div class="modal-body">
+            <span id="modalTag" class="tag"></span>
+            <h2 id="modalTitle" style="margin: 10px 0;"></h2>
+            <p id="modalDesc" style="color: #64748b; font-size: 1.1rem;"></p>
+            
+            <div class="tech-specs">
+                <div>
+                    <h4>Technical Highlights</h4>
+                    <p id="modalHighlights" style="font-size: 0.95rem;"></p>
+                </div>
+                <div id="modalLinkContainer">
+                    <h4>Resources</h4>
+                    <a id="modalLink" href="#" class="btn" target="_blank">View Onshape CAD</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <footer>
     <p>&copy; 2026 Arsh Mehan | Engineering Excellence</p>
 </footer>
+
+<script>
+    function openModal(title, img, tag, desc, highlights, link) {
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('modalImg').src = img;
+        document.getElementById('modalTag').innerText = tag;
+        document.getElementById('modalDesc').innerText = desc;
+        document.getElementById('modalHighlights').innerText = highlights;
+        
+        const linkBtn = document.getElementById('modalLink');
+        if (link !== 'N/A') {
+            linkBtn.style.display = 'inline-block';
+            linkBtn.href = link;
+        } else {
+            linkBtn.style.display = 'none';
+        }
+        
+        document.getElementById('projectModal').style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Stop scrolling
+    }
+
+    function closeModal() {
+        document.getElementById('projectModal').style.display = 'none';
+        document.body.style.overflow = 'auto'; // Re-enable scrolling
+    }
+
+    // Close on outside click
+    window.onclick = function(event) {
+        let modal = document.getElementById('projectModal');
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+</script>
 
 </body>
 </html>
