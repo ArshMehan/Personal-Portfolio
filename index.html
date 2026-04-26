@@ -9,7 +9,7 @@
         :root { --primary: #2563eb; --dark: #0f172a; --light: #f8fafc; --accent: #3b82f6; }
         body { font-family: 'Inter', sans-serif; margin: 0; background: var(--light); color: var(--dark); line-height: 1.6; scroll-behavior: smooth; }
         nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .hero { height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; text-align: center; padding: 0 20px; }
+        .hero { height: 40vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; text-align: center; padding: 0 20px; }
         .hero h1 { font-size: 3.5rem; margin: 0; letter-spacing: -1px; }
         .container { width: 90%; max-width: 1200px; margin: auto; padding: 60px 0; }
         .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; font-weight: 800; color: var(--dark); }
@@ -34,7 +34,7 @@
     <div style="font-weight: 800; font-size: 1.5rem; color: var(--primary);">AM.</div>
     <div>
         <a href="#projects" style="margin-right: 25px; text-decoration: none; color: var(--dark); font-weight: 600;">Projects</a>
-        <a href="mailto:arshmehan@gmail.com" class="btn">Hire Me</a>
+        <a href="mailto:arshmehan@gmail.com" class="btn">Contact Me</a>
     </div>
 </nav>
 
@@ -46,6 +46,80 @@
 <div class="container" id="projects">
     <h2 class="section-title">The Engineering Log</h2>
     <div class="grid">
+
+        <div class="card">
+            <img src="Screenshot 2026-04-20 230958.png" alt="Decode V2 Drivetrain">
+            <div class="card-content">
+                <span class="tag">Competitive</span>
+                <h3>Decode Robot V2</h3>
+                <p>Advanced packaging study ensuring all 8 motors fit in the bottom chassis for optimal COG.</p>
+                <ul>
+                    <li>12" x 13.5" footprint</li>
+                    <li>Superior access to motors, belts, and pulleys</li>
+                    <li>Highly realistic internal layout</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="Screenshot 2026-04-20 224836.png" alt="Decode V1 Superstructure">
+            <div class="card-content">
+                <span class="tag">Competitive</span>
+                <h3>Decode Robot V1</h3>
+                <p>First major project implementing a full superstructure with detachable subsystems.</p>
+                <ul>
+                    <li>Superstructure removes in under 8 screws</li>
+                    <li>Dual intake and turret implementation</li>
+                    <li>Customized belt/gear reductions</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="Screenshot 2026-04-20 224208.png" alt="Spur PTO System">
+            <div class="card-content">
+                <span class="tag">Mechanism</span>
+                <h3>Spur Differential PTO</h3>
+                <p>Power Take-Off system leveraging stalling and counter-rotation for power distribution.</p>
+                <ul>
+                    <li>First time implementing custom dowels</li>
+                    <li>Experimentation with gear/shaft variety</li>
+                    <li>Optimized for modularity and compactness</li>
+                </ul>
+            </div>
+            <div class="links">
+                <a href="https://cad.onshape.com/documents/d51b81b7b5242d13238d5f9c/w/1cc7b2cef94a6d49ef6814b1/e/ec7b4c799195e4597f4dd2ef" class="btn" target="_blank">View CAD</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <span class="tag">Concept</span>
+                <h3>Freight Frenzy Practice Bot</h3>
+                <p>Experimental concept bot exploring coaxial turret slides and bare-motor reductions.</p>
+                <ul>
+                    <li>5 DOF outtake subsystem</li>
+                    <li>Mini-turret end effector</li>
+                    <li>Focus on weight distribution</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <span class="tag">Study</span>
+                <h3>Super Modular Drivetrain</h3>
+                <p>Comparative research between high RPM belt efficiency and planetary gearbox performance.</p>
+                <ul>
+                    <li>Ultra-compact 12" x 13.5" footprint</li>
+                    <li>Optimized for rapid drivetrain swaps</li>
+                    <li>High RPM (800-1000) testing</li>
+                </ul>
+            </div>
+            <div class="links">
+                <a href="https://cad.onshape.com/documents/a762d78dceac9b2eadaac582/w/4a5e7dc5b1c5d9c9cf3f7ade/e/c9b695e9dc026b50b541b51a" class="btn" target="_blank">View CAD</a>
+            </div>
+        </div>
 
         <div class="card">
             <img src="Screenshot 2026-04-20 202435.png" alt="ITD V3 Final Design">
@@ -61,6 +135,53 @@
             </div>
             <div class="links">
                 <a href="https://cad.onshape.com/documents/500e0b556027f584a0163ccc/w/6ee5606072da4702d9095a64/e/5865db44d45624407bc74789" class="btn" target="_blank">View CAD</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="Screenshot 2026-04-19 220411.png" alt="ITD V2 Linear Extension">
+            <div class="card-content">
+                <span class="tag">Iteration</span>
+                <h3>Into the Deep V2</h3>
+                <p>Study on pitching linear extensions. Focused on low COG packaging and motor repair accessibility.</p>
+                <ul>
+                    <li>6 DOF pitching mechanism</li>
+                    <li>Fast design iteration cycle</li>
+                    <li>Optimized for maintenance speed</li>
+                </ul>
+            </div>
+            <div class="links">
+                <a href="https://cad.onshape.com/documents/acfcfb5e789f9d1567fe2565/w/0edabab2052a78754d798648/e/5b55488c01ab4972398a8935" class="btn" target="_blank">View CAD</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="Screenshot 2026-04-20 200959.png" alt="ITD V1 Linkage Study">
+            <div class="card-content">
+                <span class="tag">Iteration</span>
+                <h3>Into the Deep V1</h3>
+                <p>Double Reverse Four-Bar mechanism using overcenter linkages for mechanical advantage.</p>
+                <ul>
+                    <li>Focus on high-torque lifting</li>
+                    <li>Overcenter linkage for locking</li>
+                    <li>Initial 2024 game element analysis</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <span class="tag">Experimental</span>
+                <h3>Locking Mecanum Drivetrain</h3>
+                <p>Two-input planetary gearbox research used to control wheel locking for traction vs. mobility.</p>
+                <ul>
+                    <li>Planetary gearbox input study</li>
+                    <li>Creative holonomic alternative</li>
+                    <li>Full custom CAD assembly</li>
+                </ul>
+            </div>
+            <div class="links">
+                <a href="https://cad.onshape.com/documents/288792bb3626321c94175cd8/w/b73be8bde34d489242e6aa53/e/fc395c62069a16d3302fc8d7" class="btn" target="_blank">View CAD</a>
             </div>
         </div>
 
@@ -83,19 +204,15 @@
         </div>
 
         <div class="card">
-            <img src="Screenshot 2026-04-20 224208.png" alt="Spur PTO System">
             <div class="card-content">
                 <span class="tag">Mechanism</span>
-                <h3>Spur Differential PTO</h3>
-                <p>Power Take-Off system using spur differentials to distribute torque through stalling and counter-rotation.</p>
+                <h3>Differential Swerve</h3>
+                <p>Design incorporating an intrinsic differential system directly into the swerve module.</p>
                 <ul>
-                    <li>Compact modular design</li>
-                    <li>First implementation of custom dowels</li>
-                    <li>Stalling-based power distribution</li>
+                    <li>Intrinsic I/O mechanics</li>
+                    <li>Ease of assembly focus</li>
+                    <li>Complex 3DP superstructure</li>
                 </ul>
-            </div>
-            <div class="links">
-                <a href="https://cad.onshape.com/documents/d51b81b7b5242d13238d5f9c/w/1cc7b2cef94a6d49ef6814b1/e/ec7b4c799195e4597f4dd2ef" class="btn" target="_blank">View CAD</a>
             </div>
         </div>
 
@@ -114,50 +231,16 @@
         </div>
 
         <div class="card">
-            <img src="Screenshot 2026-04-19 220411.png" alt="ITD V2 Linear Extension">
-            <div class="card-content">
-                <span class="tag">Iteration</span>
-                <h3>Into the Deep V2</h3>
-                <p>Study on pitching linear extensions. Focused on low COG packaging and motor repair accessibility.</p>
-            </div>
-            <div class="links">
-                <a href="https://cad.onshape.com/documents/acfcfb5e789f9d1567fe2565/w/0edabab2052a78754d798648/e/5b55488c01ab4972398a8935" class="btn" target="_blank">View CAD</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="Screenshot 2026-04-20 230958.png" alt="Decode V2 Drivetrain">
-            <div class="card-content">
-                <span class="tag">Competitive</span>
-                <h3>Decode Robot V2</h3>
-                <p>Iteration focusing on center-of-gravity optimization and streamlined drivetrain packaging.</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="Screenshot 2026-04-20 224836.png" alt="Decode V1 Superstructure">
-            <div class="card-content">
-                <span class="tag">Competitive</span>
-                <h3>Decode Robot V1</h3>
-                <p>First major project implementing a full superstructure with dual-intake systems.</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="Screenshot 2026-04-20 200959.png" alt="ITD V1 Linkage Study">
-            <div class="card-content">
-                <span class="tag">Iteration</span>
-                <h3>Into the Deep V1</h3>
-                <p>Double Reverse Four-Bar mechanism using overcenter linkages for mechanical advantage.</p>
-            </div>
-        </div>
-
-        <div class="card">
             <img src="Screenshot 2026-04-18 231050.png" alt="PowerPlay Claw System">
             <div class="card-content">
                 <span class="tag">Competitive</span>
                 <h3>PowerPlay Robot</h3>
                 <p>Custom steel sheet metal claws iterated from 3D prototypes with rubber compliant lining.</p>
+                <ul>
+                    <li>First time using linear slides</li>
+                    <li>Optimized claw geometry</li>
+                    <li>Hybrid steel/3DP construction</li>
+                </ul>
             </div>
         </div>
 
@@ -167,6 +250,11 @@
                 <span class="tag">Foundation</span>
                 <h3>Freight Frenzy Robot</h3>
                 <p>The foundation of my CAD journey. First introduction to assemblies and custom 3D printed components.</p>
+                <ul>
+                    <li>Holonomic drivetrain</li>
+                    <li>Introduction to OpenCV</li>
+                    <li>Basic custom 3DP parts</li>
+                </ul>
             </div>
         </div>
 
