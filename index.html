@@ -4,216 +4,220 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arsh Mehan | Engineering & Robotics</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg: #0a0a0a;
+        :root { 
+            --primary: #3b82f6; 
+            --dark: #0a0a0a; 
             --surface: #141414;
-            --surface-accent: #1f1f1f;
-            --primary: #3b82f6;
-            --text-main: #ffffff;
-            --text-dim: #a3a3a3;
+            --light: #f8fafc; 
             --border: #262626;
+            --text-dim: #a3a3a3;
+        }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            background: var(--light); 
+            color: var(--dark); 
+            line-height: 1.6; 
+            display: flex;
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text-main);
-            margin: 0;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Sidebar Navigation inspired by the template */
-        nav {
+        /* Inspiration-style Sidebar About Section */
+        .sidebar {
+            width: 350px;
+            height: 100vh;
+            background: var(--dark);
+            color: white;
             position: fixed;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 260px;
-            background: var(--surface);
-            border-right: 1px solid var(--border);
-            padding: 40px 30px;
+            padding: 60px 40px;
             display: flex;
             flex-direction: column;
-            z-index: 100;
+            border-right: 1px solid var(--border);
         }
 
-        .nav-logo { font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; margin-bottom: 50px; color: var(--primary); }
-        .nav-links { list-style: none; padding: 0; margin: 0; }
-        .nav-links li { margin-bottom: 20px; font-weight: 500; color: var(--text-dim); cursor: pointer; transition: 0.2s; }
-        .nav-links li:hover { color: var(--text-main); }
-
-        /* Main Content Area */
-        main { margin-left: 260px; padding: 80px 5%; max-width: 1200px; }
-
-        .hero h1 { font-size: 4rem; font-weight: 900; margin: 0; letter-spacing: -3px; }
-        .hero p { font-size: 1.25rem; color: var(--text-dim); max-width: 600px; margin-top: 20px; }
-
-        /* Project Grid - Minimalist Cards */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 24px;
-            margin-top: 60px;
-        }
-
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
-
-        .card:hover {
-            border-color: var(--primary);
-            transform: translateY(-4px);
-            background: var(--surface-accent);
-        }
-
-        .card img { width: 100%; height: 240px; object-fit: cover; filter: grayscale(20%); transition: 0.3s; }
-        .card:hover img { filter: grayscale(0%); }
-        .card-body { padding: 24px; }
-        .card-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--primary); text-transform: uppercase; margin-bottom: 8px; display: block; }
-        .card h3 { margin: 0; font-size: 1.4rem; font-weight: 700; }
-
-        /* Project Sub-Page (Full Screen Modal) */
-        .project-view {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--bg);
-            z-index: 1000;
-            overflow-y: auto;
-            padding: 0;
-        }
-
-        .project-view.active { display: block; }
-
-        .back-bar {
-            padding: 20px 5%;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 12px;
             display: flex;
             align-items: center;
-            border-bottom: 1px solid var(--border);
-            z-index: 1001;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 2rem;
+            margin-bottom: 30px;
         }
 
-        .back-btn { background: none; border: 1px solid var(--border); color: white; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-family: 'JetBrains Mono'; }
+        .sidebar h2 { 
+            font-size: 1.8rem; 
+            margin: 0 0 10px 0; 
+            letter-spacing: -1px; 
+        }
 
-        .detail-hero { width: 100%; height: 60vh; background-color: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .detail-hero img { width: 100%; height: 100%; object-fit: contain; }
+        .sidebar .location {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            display: block;
+        }
 
-        .detail-content { max-width: 800px; margin: 60px auto; padding: 0 24px; }
-        .case-study-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
-        .label { font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; margin-bottom: 10px; display: block; border-left: 2px solid var(--primary); padding-left: 10px; }
+        .sidebar p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            margin-bottom: 40px;
+        }
 
-        /* Contact Section */
-        footer { border-top: 1px solid var(--border); margin-top: 100px; padding: 60px 0; }
-        .contact-links a { color: var(--text-main); text-decoration: none; font-weight: 700; margin-right: 30px; border-bottom: 1px solid var(--primary); }
+        .sidebar-stats {
+            border-top: 1px solid var(--border);
+            padding-top: 30px;
+        }
 
-        @media (max-width: 900px) {
-            nav { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--border); }
-            main { margin-left: 0; padding-top: 40px; }
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+        }
+
+        .stat-row span:first-child { color: var(--text-dim); }
+        .stat-row span:last-child { font-weight: 600; font-family: 'JetBrains Mono'; }
+
+        /* Main Content */
+        main {
+            margin-left: 350px;
+            flex: 1;
+            padding: 60px 5%;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 15px;
+        }
+
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+            gap: 25px; 
+        }
+
+        .card { 
+            background: white; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            cursor: pointer; 
+            border: 1px solid #e2e8f0; 
+            transition: 0.3s; 
+        }
+
+        .card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .card img { width: 100%; height: 200px; object-fit: cover; background: #f1f5f9; }
+        .card-content { padding: 20px; }
+        .tag { color: var(--primary); font-family: 'JetBrains Mono'; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; }
+
+        /* Project View Styles */
+        .project-view { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 2000; overflow-y: auto; }
+        .project-view.active { display: block; }
+        .back-nav { padding: 20px 5%; border-bottom: 1px solid #eee; }
+        .back-btn { background: var(--dark); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; }
+        .detail-img { width: 100%; max-height: 500px; object-fit: contain; background: #0a0a0a; }
+
+        @media (max-width: 1000px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--border); padding: 40px 5%; }
+            main { margin-left: 0; }
         }
     </style>
 </head>
 <body>
 
-<nav>
-    <div class="nav-logo">ARSH MEHAN</div>
-    <ul class="nav-links">
-        <li onclick="window.scrollTo(0,0)">/ Portfolio</li>
-        <li><a href="mailto:arshmehan@gmail.com" style="color:inherit; text-decoration:none;">/ Email</a></li>
-        <li>/ Onshape</li>
-    </ul>
-    <div style="margin-top: auto; font-size: 0.8rem; color: var(--text-dim); font-family: 'JetBrains Mono';">
-        PLAINSBORO, NJ<br>2026 EDITION
+<aside class="sidebar">
+    <div class="profile-pic">AM</div>
+    <h2>Arsh Mehan</h2>
+    <span class="location">Plainsboro, NJ • 2026</span>
+    <p>
+        Mechanical designer focused on iterative CAD modeling and technical analysis. Applying the technical rigor of a violist to the precision requirements of competitive robotics.
+    </p>
+    
+    <div class="sidebar-stats">
+        <div class="stat-row"><span>Focus</span><span>Mechanical Design</span></div>
+        <div class="stat-row"><span>CAD Platform</span><span>Onshape</span></div>
+        <div class="stat-row"><span>Team</span><span>FTC 14481</span></div>
+        <div class="stat-row"><span>Role</span><span>Design Lead</span></div>
     </div>
-</nav>
+
+    <div style="margin-top: auto; padding-top: 30px;">
+        <a href="mailto:arshmehan@gmail.com" style="color: var(--primary); text-decoration: none; font-family: 'JetBrains Mono'; font-size: 0.8rem;">[ CONTACT EMAIL ]</a>
+    </div>
+</aside>
 
 <main>
-    <section class="hero">
-        <h1>Engineering & <br>Robotics Design</h1>
-        <p>Mechanical designer at FTC Team 14481 "Don't Blink," focused on subsystem optimization and technical analysis.</p>
-    </section>
+    <div class="section-header">
+        <h3 style="margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; color: #64748b;">Technical Portfolio</h3>
+        <span style="font-family: 'JetBrains Mono'; font-size: 0.8rem;">Showing 14 Projects</span>
+    </div>
 
     <div class="grid" id="project-list"></div>
-
-    <footer>
-        <div class="contact-links">
-            <a href="mailto:arshmehan@gmail.com">arshmehan@gmail.com</a>
-            <a href="tel:7329159724">732.915.9724</a>
-        </div>
-        <p style="margin-top: 40px; font-size: 0.8rem; color: var(--text-dim); font-family: 'JetBrains Mono';">
-            &copy; 2026 Arsh Mehan. Designed with technical rigor.
-        </p>
+    
+    <footer style="margin-top: 80px; padding-top: 30px; border-top: 1px solid #e2e8f0; font-size: 0.8rem; color: #64748b;">
+        &copy; 2026 Arsh Mehan. Built with code and CAD precision.
     </footer>
 </main>
 
-<!-- PROJECT CASE STUDY VIEW -->
+<!-- PROJECT SUB-PAGE -->
 <div id="project-page" class="project-view">
-    <div class="back-bar">
-        <button class="back-btn" onclick="goBack()">← RETURN TO INDEX</button>
+    <div class="back-nav">
+        <button class="back-btn" onclick="goBack()">← Back to Index</button>
     </div>
-    <div class="detail-hero">
-        <img id="detail-img" src="">
-    </div>
-    <div class="detail-content">
-        <span id="detail-tag" class="card-tag"></span>
-        <h2 id="detail-title" style="font-size: 3rem; margin: 10px 0 30px;"></h2>
-        
-        <div class="case-study-grid">
-            <div>
-                <span class="label">Challenge</span>
-                <p id="detail-desc" style="color: var(--text-dim);"></p>
-            </div>
-            <div>
-                <span class="label">Technical Solution</span>
-                <p id="detail-tech" style="white-space: pre-line;"></p>
-            </div>
+    <img id="detail-img" class="detail-img" src="">
+    <div style="max-width: 800px; margin: 40px auto; padding: 0 20px;">
+        <span id="detail-tag" class="tag"></span>
+        <h1 id="detail-title" style="font-size: 2.5rem; margin: 10px 0;"></h1>
+        <p id="detail-desc" style="font-size: 1.1rem; color: #475569;"></p>
+        <div style="background: #f1f5f9; padding: 30px; border-radius: 12px; margin-top: 30px;">
+            <h4 style="margin-top: 0; text-transform: uppercase; font-size: 0.8rem;">Technical Highlights</h4>
+            <p id="detail-tech" style="white-space: pre-line; margin-bottom: 0;"></p>
         </div>
-
-        <div style="margin-top: 60px;" id="cad-link-area"></div>
+        <div id="cad-link-area" style="margin-top: 30px;"></div>
     </div>
 </div>
 
 <script>
     const projects = [
-        { id: 'itd-v3', title: 'Into the Deep V3', tag: 'Flagship Assembly', img: 'Screenshot 2026-04-20 202435.png', desc: 'Designing a high-torque climbing drivetrain for the 2026 flagship robot build.', tech: '• Virtual four-bar linkage integration\n• Detailed internal wire pathing\n• High-clearance chassis design', link: 'https://cad.onshape.com/documents/500e0b556027f584a0163ccc/w/6ee5606072da4702d9095a64/e/5865db44d45624407bc74789' },
-        { id: 'spur-pto', title: 'Spur Differential PTO', tag: 'Applied Mechanics', img: 'Screenshot 2026-04-20 224208.png', desc: 'Analysis of power take-off systems for multi-functional motor utilization.', tech: '• Precision dowel implementation\n• Torque transfer efficiency study\n• Spur gear differential integration', link: 'https://cad.onshape.com/documents/d51b81b7b5242d13238d5f9c/w/1cc7b2cef94a6d49ef6814b1/e/ec7b4c799195e4597f4dd2ef' },
-        { id: 'locking-mecanum', title: 'Locking Mecanum', tag: 'Experimental', img: 'Screenshot 2026-04-20 195752.png', desc: 'Custom planetary gearbox designed to switch between holonomic and traction modes.', tech: '• Planetary wheel hub design\n• Toggleable locking mechanism\n• Structural stability analysis', link: 'https://cad.onshape.com/documents/288792bb3626321c94175cd8/w/b73be8bde34d489242e6aa53/e/fc395c62069a16d3302fc8d7' },
-        { id: 'decode-v2', title: 'Decode Robot V2', tag: 'Optimization', img: 'Screenshot 2026-04-20 230958.png', desc: 'Mass centralization study prioritizing a low center of gravity for high-speed stability.', tech: '• 8-motor internal housing\n• 12" x 13.5" optimized footprint\n• Low-profile clearance geometry', link: null }
+        { id: 'itd-v3', title: 'Into the Deep V3', tag: 'Flagship Build', img: 'Screenshot 2026-04-20 202435.png', desc: 'Flagship assembly for the 2026 season.', tech: '• Virtual four-bar linkage\n• Internal wire management\n• High-torque climbing drive', link: 'https://cad.onshape.com/documents/500e0b556027f584a0163ccc/w/6ee5606072da4702d9095a64/e/5865db44d45624407bc74789' },
+        { id: 'spur-pto', title: 'Spur Differential PTO', tag: 'Applied Mechanics', img: 'Screenshot 2026-04-20 224208.png', desc: 'Technical analysis of power take-off systems.', tech: '• Precision dowel use\n• Torque transfer analysis', link: 'https://cad.onshape.com/documents/d51b81b7b5242d13238d5f9c/w/1cc7b2cef94a6d49ef6814b1/e/ec7b4c799195e4597f4dd2ef' },
+        { id: 'ff-practice', title: 'FF Practice Bot', tag: 'Prototyping', img: 'Screenshot 2026-04-20 223506.png', desc: 'Coaxial turret research platform.', tech: '• 5-DOF outtake\n• 6-wheel tank drive', link: null },
+        { id: 'ff-foundation', title: 'Freight Frenzy Robot', tag: 'Foundational', img: 'Screenshot 2026-04-18 224554.png', desc: 'Inaugural CAD project establishing core robotics competencies.', tech: '• Holonomic drivetrain\n• OpenCV vision integration', link: null }
+        // Add other projects here...
     ];
 
     const grid = document.getElementById('project-list');
     projects.forEach(p => {
         const card = document.createElement('div');
         card.className = 'card';
-        card.innerHTML = `<img src="${p.img}" loading="lazy"><div class="card-body"><span class="card-tag">${p.tag}</span><h3>${p.title}</h3></div>`;
+        card.innerHTML = `<img src="${p.img}"><div class="card-content"><span class="tag">${p.tag}</span><h3 style="margin:10px 0 0;">${p.title}</h3></div>`;
         card.onclick = () => navigateTo(p.id);
         grid.appendChild(card);
     });
 
     function navigateTo(id) {
-        const project = projects.find(p => p.id === id);
-        if (!project) return;
-        document.getElementById('detail-title').innerText = project.title;
-        document.getElementById('detail-img').src = project.img;
-        document.getElementById('detail-tag').innerText = project.tag;
-        document.getElementById('detail-desc').innerText = project.desc;
-        document.getElementById('detail-tech').innerText = project.tech;
+        const p = projects.find(proj => proj.id === id);
+        if (!p) return;
+        document.getElementById('detail-title').innerText = p.title;
+        document.getElementById('detail-img').src = p.img;
+        document.getElementById('detail-tag').innerText = p.tag;
+        document.getElementById('detail-desc').innerText = p.desc;
+        document.getElementById('detail-tech').innerText = p.tech;
         const linkArea = document.getElementById('cad-link-area');
-        linkArea.innerHTML = project.link ? `<a href="${project.link}" target="_blank" style="color:var(--primary); font-family:'JetBrains Mono'; text-decoration:none;">[ VIEW ONSHAPE SOURCE ]</a>` : '';
+        linkArea.innerHTML = p.link ? `<a href="${p.link}" target="_blank" style="color:var(--primary); font-weight:700;">[ VIEW ONSHAPE CAD ]</a>` : '';
         document.getElementById('project-page').classList.add('active');
         document.body.style.overflow = 'hidden';
     }
