@@ -50,7 +50,6 @@
 
         .container { width: 90%; max-width: 1100px; margin: auto; padding: 20px 0 60px; }
         
-        /* Hero Section */
         .hero-about {
             display: flex;
             align-items: center;
@@ -102,7 +101,6 @@
             object-position: center bottom;
         }
 
-        /* Shared Grid & List styles */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         .section-title { font-size: 2rem; margin-bottom: 40px; padding-top: 80px; border-top: 1px solid var(--border); }
         
@@ -149,7 +147,6 @@
             border-top: 1px solid var(--border);
         }
 
-        /* Overlay Styles */
         .project-view { 
             display: none; 
             position: fixed; 
@@ -184,7 +181,6 @@
 </nav>
 
 <div class="container">
-    <!-- About Me Section -->
     <section id="about" class="hero-about">
         <div class="hero-text">
             <h1>Arsh Mehan</h1>
@@ -196,11 +192,9 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <h2 id="projects" class="section-title">Projects</h2>
     <div class="grid" id="project-list"></div>
 
-    <!-- Experience / Skills / Awards Section -->
     <h2 id="experience" class="section-title">Experience & Skills</h2>
     <div class="grid">
         <!-- Experience -->
@@ -209,15 +203,15 @@
             <ul style="list-style: none; padding: 0; color: var(--text-muted);">
                 <li style="margin-bottom: 20px;">
                     <strong style="color: var(--text-main); display: block;">Design Lead, FTC Team 14481</strong>
-                    Collaborating on mechanical designs and engineering portfolios for "Don't Blink".
+                    Leading mechanical design and technical documentation for "Don't Blink".
                 </li>
                 <li style="margin-bottom: 20px;">
                     <strong style="color: var(--text-main); display: block;">Orchestral Violist</strong>
-                    Performing with the Philadelphia Youth Orchestra and YOCJ Symphonic Orchestra.
+                    Member of the Philadelphia Youth Orchestra and YOCJ Symphonic Orchestra.
                 </li>
                 <li style="margin-bottom: 20px;">
-                    <strong style="color: var(--text-main); display: block;">Summer Intensive Artist</strong>
-                    Accepted to the Green Mountain Chamber Music Festival (2026).
+                    <strong style="color: var(--text-main); display: block;">Technical Competitor</strong>
+                    Active member of Science Bowl and Science Olympiad (Robot Tour, Codebusters).
                 </li>
             </ul>
         </div>
@@ -227,8 +221,9 @@
             <h3 style="color: var(--primary); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px;">Technical Skills</h3>
             <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
                 <span class="skill-tag">Onshape CAD</span>
-                <span class="skill-tag">3D Printing</span>
-                <span class="skill-tag">Mechanical Modeling</span>
+                <span class="skill-tag">3D Printing (Bambu/Creality)</span>
+                <span class="skill-tag">Mechanical Analysis</span>
+                <span class="skill-tag">Java (FTC)</span>
                 <span class="skill-tag">Web Development</span>
                 <span class="skill-tag">Rapid Prototyping</span>
             </div>
@@ -236,12 +231,20 @@
 
         <!-- Awards -->
         <div>
-            <h3 style="color: var(--primary); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px;">Academic & Clubs</h3>
+            <h3 style="color: var(--primary); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px;">Awards</h3>
             <ul style="list-style: none; padding: 0; color: var(--text-muted);">
-                <li style="margin-bottom: 15px;">• Science Olympiad (Robot Tour)</li>
-                <li style="margin-bottom: 15px;">• National Science Bowl Member</li>
-                <li style="margin-bottom: 15px;">• CJMEA Philharmonic Participant</li>
-                <li style="margin-bottom: 15px;">• AP Calculus BC & Physics</li>
+                <li style="margin-bottom: 15px;">
+                    <strong style="color: var(--text-main); display: block;">Inspire Award 2nd Place</strong>
+                    FTC World Championship 2025
+                </li>
+                <li style="margin-bottom: 15px;">
+                    <strong style="color: var(--text-main); display: block;">Presidential Service Award Gold</strong>
+                    Recognizing over 250 hours of community service.
+                </li>
+                <li style="margin-bottom: 15px;">
+                    <strong style="color: var(--text-main); display: block;">Good Citizens Award</strong>
+                    Awarded for leadership and civic responsibility.
+                </li>
             </ul>
         </div>
     </div>
@@ -254,7 +257,6 @@
     </div>
 </footer>
 
-<!-- Project Overlay -->
 <div id="project-page" class="project-view">
     <div class="back-nav"><button class="back-btn" onclick="goBack()">← Back to Portfolio</button></div>
     <div class="detail-header"><img id="detail-img" src=""></div>
