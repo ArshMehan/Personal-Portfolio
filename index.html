@@ -147,6 +147,7 @@
             border-top: 1px solid var(--border);
         }
 
+        /* Detail Overlay/Sub-Page */
         .project-view { 
             display: none; 
             position: fixed; 
@@ -158,7 +159,43 @@
         .project-view.active { display: block; }
         .back-nav { background: var(--surface); padding: 15px 5%; position: sticky; top: 0; border-bottom: 1px solid var(--border); z-index: 2001; }
         .back-btn { background: var(--primary); color: white; border: none; padding: 10px 24px; border-radius: 8px; cursor: pointer; font-weight: 600; }
-        .detail-header img { width: 100%; max-height: 550px; object-fit: contain; background: #000; display: block; }
+        
+        /* New Slider Styles */
+        .detail-slider { 
+            width: 100%; 
+            max-height: 550px; 
+            position: relative; 
+            background: #000; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            overflow: hidden; 
+        }
+        .slider-img { 
+            max-width: 100%; 
+            max-height: 550px; 
+            object-fit: contain; 
+            display: none; /* Controlled by JS */
+        }
+        .slider-img.active { display: block; }
+        
+        .slider-btn { 
+            position: absolute; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            background: rgba(0,0,0,0.6); 
+            color: white; 
+            border: none; 
+            padding: 15px; 
+            cursor: pointer; 
+            font-size: 1.2rem; 
+            border-radius: 50%; 
+            z-index: 2002; 
+        }
+        .slider-btn:hover { background: rgba(59, 130, 246, 0.8); }
+        .prev-btn { left: 20px; }
+        .next-btn { right: 20px; }
+
         .detail-body { max-width: 900px; margin: auto; padding: 50px 20px; }
 
         @media (max-width: 900px) {
@@ -252,7 +289,14 @@
 
 <div id="project-page" class="project-view">
     <div class="back-nav"><button class="back-btn" onclick="goBack()">← Back to Portfolio</button></div>
-    <div class="detail-header"><img id="detail-img" src=""></div>
+    
+    <div class="detail-slider" id="detail-slider">
+        <button class="slider-btn prev-btn" id="slider-prev" onclick="changeSlide(-1)">&#10094;</button>
+        <div id="slider-images-container">
+            </div>
+        <button class="slider-btn next-btn" id="slider-next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+
     <div class="detail-body">
         <span id="detail-tag" class="tag"></span>
         <h1 id="detail-title" style="font-size: 2.8rem; margin: 10px 0;"></h1>
@@ -266,6 +310,10 @@
 </div>
 
 <script>
+    // Slider state
+    let currentSlideIndex = 0;
+    let activeProjectImages = [];
+
     const projects = [
         { id: 'itd-v3', title: 'Into the Deep V3', tag: 'Flagship Build', img: 'Screenshot 2026-04-20 202435.png', desc: 'Flagship assembly for the 2026 season featuring a virtual four-bar linkage.', tech: '• Virtual four-bar linkage\n• Internal wire management\n• High-torque climbing drive', link: 'https://cad.onshape.com/documents/500e0b556027f584a0163ccc/w/6ee5606072da4702d9095a64/e/5865db44d45624407bc74789' },
         { id: 'decode-v2', title: 'Decode Robot V2', tag: 'Optimization', img: 'Screenshot 2026-04-20 230958.png', desc: 'Mass centralization study prioritizing lower center of gravity.', tech: '• 8-motor internal housing\n• Low-profile clearance geometry.', link: null },
@@ -274,7 +322,10 @@
         { id: 'decode-v1', title: 'Decode Robot V1', tag: 'Modular Design', img: 'Screenshot 2026-04-20 224836.png', desc: 'Modular architecture for rapid assembly and field service.', tech: '• Subsystem removal via 8 screws\n• Dual-intake integration.', link: null },
         { id: 'super-modular', title: 'Super Modular Drivetrain', tag: 'Efficiency', img: 'Screenshot 2026-04-20 221146.png', desc: 'Study on belt vs. planetary transmission efficiency.', tech: '• Benchmarked 800-1000 RPM range\n• Minimized transmission loss.', link: 'https://cad.onshape.com/documents/a762d78dceac9b2eadaac582/w/4a5e7dc5b1c5d9c9cf3f7ade/e/c9b695e9dc026b50b541b51a' },
         { id: 'itd-v2', title: 'Into the Deep V2', tag: 'Kinematics', img: 'Screenshot 2026-04-19 220411.png', desc: 'Study on pitching linear extensions to maximize reach.', tech: '• 6-DOF system\n• 3D-line stringing path analysis.', link: 'https://cad.onshape.com/documents/acfcfb5e789f9d1567fe2565/w/0edabab2052a78754d798648/e/5b55488c01ab4972398a8935' },
-        { id: 'itd-v1', title: 'Into the Deep V1', tag: 'Linkage Analysis', img: 'Screenshot 2026-04-20 200959.png', desc: 'Double Reverse Four-Bar mechanism using overcenter linkages.', tech: '• Optimized lifting torque\n• Active pivoting intake.', link: null },
+        
+        // ITD V1: Thumbnail set to GIF, both images added to extraImages array
+        { id: 'itd-v1', title: 'Into the Deep V1', tag: 'Linkage Analysis', img: 'itd dr4b smol.gif', extraImages: ['itd dr4b smol.gif', 'Screenshot 2026-04-20 200959.png'], desc: 'Double Reverse Four-Bar mechanism using overcenter linkages.', tech: '• Optimized lifting torque\n• Active pivoting intake.', link: null },
+        
         { id: 'locking-mecanum', title: 'Locking Mecanum', tag: 'Experimental', img: 'Screenshot 2026-04-20 195752.png', desc: 'Custom planetary gearbox to toggle between holonomic and traction modes.', tech: '• Planetary wheel hubs\n• Traction-lock mechanism.', link: 'https://cad.onshape.com/documents/288792bb3626321c94175cd8/w/b73be8bde34d489242e6aa53/e/fc395c62069a16d3302fc8d7' },
         { id: 'coaxial-swerve', title: 'Coaxial Swerve Drive', tag: 'Advanced Research', img: 'Screenshot 2026-04-25 205851.png', desc: 'Master-sketching platform for coaxial swerve pod kinematics.', tech: '• Concentric shaft study\n• Custom idler belt paths.', link: 'https://cad.onshape.com/documents/a5c8fcac7ec2f36807091e62/w/d628b2deadbf7ddc49ca9853/e/1167eec7910b8e92006cde84' },
         { id: 'diff-swerve', title: 'Differential Swerve', tag: 'Transmission', img: 'Screenshot 2026-04-20 193233.png', desc: 'Intrinsic differential gear system study for holonomic movement.', tech: '• 3D-printed transmission housing\n• Structural stability analysis.', link: null },
@@ -295,15 +346,58 @@
     function navigateTo(id) {
         const p = projects.find(proj => proj.id === id);
         if (!p) return;
+        
+        // Reset slider state
+        currentSlideIndex = 0;
+        activeProjectImages = [];
+        const container = document.getElementById('slider-images-container');
+        container.innerHTML = ''; // Clear old images
+
+        // Set Text content
         document.getElementById('detail-title').innerText = p.title;
-        document.getElementById('detail-img').src = p.img;
         document.getElementById('detail-tag').innerText = p.tag;
         document.getElementById('detail-desc').innerText = p.desc;
         document.getElementById('detail-tech').innerText = p.tech;
+
+        // Handle Images (Slider)
+        // If extraImages exist, use that array, otherwise create an array with just the main img
+        if (p.extraImages && p.extraImages.length > 1) {
+            activeProjectImages = p.extraImages;
+            document.getElementById('slider-prev').style.display = 'block';
+            document.getElementById('slider-next').style.display = 'block';
+        } else {
+            activeProjectImages = [p.img];
+            document.getElementById('slider-prev').style.display = 'none';
+            document.getElementById('slider-next').style.display = 'none';
+        }
+
+        // Create img elements for the slider
+        activeProjectImages.forEach((imgSrc, index) => {
+            const imgEl = document.createElement('img');
+            imgEl.src = imgSrc;
+            imgEl.className = 'slider-img';
+            if (index === 0) imgEl.classList.add('active'); // Show first image
+            container.appendChild(imgEl);
+        });
+
         const linkArea = document.getElementById('cad-link-area');
         linkArea.innerHTML = p.link ? `<a href="${p.link}" target="_blank" style="color:var(--primary); font-weight:700; text-decoration:none; border: 1px solid var(--primary); padding: 10px 20px; border-radius: 6px;">View Onshape CAD →</a>` : '';
         document.getElementById('project-page').classList.add('active');
         document.body.style.overflow = 'hidden';
+    }
+
+    function changeSlide(n) {
+        const slides = document.getElementsByClassName('slider-img');
+        if (slides.length <= 1) return; // Don't do anything if only one image
+
+        // Hide current
+        slides[currentSlideIndex].classList.remove('active');
+        
+        // Calculate next index (with wrapping)
+        currentSlideIndex = (currentSlideIndex + n + slides.length) % slides.length;
+        
+        // Show next
+        slides[currentSlideIndex].classList.add('active');
     }
 
     function goBack() {
