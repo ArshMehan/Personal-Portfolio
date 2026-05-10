@@ -20,12 +20,33 @@ const projects = [
         link: null 
     },
     { 
-        id: 'linkage-study', 
-        title: 'Overcenter Linkage Analysis', 
+        id: 'itd-v1', 
+        title: 'Into the Deep V1', 
+        tag: 'Linkage Analysis', 
+        img: 'Pictures/itd dr4b smol.png', 
+        gallery: [
+            'Pictures/itd dr4b smol.png', 
+            'Pictures/20250205_155847.png', 
+            'Pictures/20250205_211001.png',
+            'Pictures/IMG_3979.png', 
+            'Pictures/IMG_4062.png', 
+            'Pictures/IMG_5294.png', 
+            'Pictures/IMG_5844.png',
+            'Pictures/IMG_8478.png', 
+            'Pictures/IMG_8483.png', 
+            'Pictures/Screenshot 2026-04-20 200959.png'
+        ],
+        desc: 'Double Reverse Four-Bar mechanism using overcenter linkages to maximize lift efficiency.', 
+        tech: '• Optimized lifting torque\n• Active pivoting intake\n• High-strength linkages', 
+        link: null 
+    },
+    { 
+        id: 'linkage-screenshot', 
+        title: 'Overcenter Analysis', 
         tag: 'Mechanical Design', 
         img: 'Pictures/Screenshot 2026-04-20 200959.png', 
         gallery: ['Pictures/Screenshot 2026-04-20 200959.png'], 
-        desc: 'A technical study of overcenter linkages to maximize lift efficiency for high-load intake systems.', 
+        desc: 'A technical study of overcenter linkages to maximize lift efficiency.', 
         tech: '• Linkage torque optimization\n• Mechanical advantage study', 
         link: null 
     },
@@ -35,7 +56,7 @@ const projects = [
         tag: 'Robotics', 
         img: 'Pictures/IMG_3979.png', 
         gallery: ['Pictures/IMG_3979.png'], 
-        desc: 'Detailed assembly of the primary mecanum drivetrain and power transmission.', 
+        desc: 'Detailed assembly of the primary mecanum drivetrain.', 
         tech: '• 19.2:1 Gearbox integration\n• Precision belt tensioning', 
         link: null 
     },
@@ -45,7 +66,7 @@ const projects = [
         tag: 'Manufacturing', 
         img: 'Pictures/IMG_4062.png', 
         gallery: ['Pictures/IMG_4062.png'], 
-        desc: 'Physical prototyping phase of the aluminum chassis plates and structural supports.', 
+        desc: 'Physical prototyping phase of the aluminum chassis plates.', 
         tech: '• CNC-ready geometry\n• Weight reduction pocketing', 
         link: null 
     },
@@ -55,7 +76,7 @@ const projects = [
         tag: 'Prototyping', 
         img: 'Pictures/IMG_5294.png', 
         gallery: ['Pictures/IMG_5294.png'], 
-        desc: 'Early version of the active intake mechanism focusing on sample acquisition speed.', 
+        desc: 'Early version of the active intake mechanism.', 
         tech: '• Compliant roller testing\n• High-speed servo feedback', 
         link: null 
     },
@@ -75,7 +96,7 @@ const projects = [
         tag: 'CAD', 
         img: 'Pictures/IMG_8478.png', 
         gallery: ['Pictures/IMG_8478.png'], 
-        desc: 'A specialized gripper designed for precise manipulation of game elements.', 
+        desc: 'A specialized gripper designed for precise manipulation.', 
         tech: '• Compliant geometry\n• Lightweight TPU 3D prints', 
         link: null 
     },
@@ -85,7 +106,7 @@ const projects = [
         tag: 'Integration', 
         img: 'Pictures/IMG_8483.png', 
         gallery: ['Pictures/IMG_8483.png'], 
-        desc: 'Protective and organized housing for the REV Control Hub and power modules.', 
+        desc: 'Protective housing for the REV Control Hub and power modules.', 
         tech: '• Shielded cable routing\n• Thermal ventilation design', 
         link: null 
     },
@@ -110,16 +131,6 @@ const projects = [
         link: null 
     },
     { 
-        id: 'itd-dr4b', 
-        title: 'DR4B Mechanism', 
-        tag: 'Mechanism', 
-        img: 'Pictures/itd dr4b smol.png', 
-        gallery: ['Pictures/itd dr4b smol.png'], 
-        desc: 'Double Reverse Four-Bar mechanism study for high-reaching vertical extension.', 
-        tech: '• Torque distribution analysis\n• Structural stability test', 
-        link: null 
-    },
-    { 
         id: 'field-nav', 
         title: 'Odometry Integration', 
         tag: 'Robotics', 
@@ -135,7 +146,7 @@ const projects = [
         tag: 'Systems', 
         img: 'Pictures/final_check.png', 
         gallery: ['Pictures/final_check.png'], 
-        desc: 'Validation of all subsystems working in tandem before final competition assembly.', 
+        desc: 'Validation of all subsystems working in tandem.', 
         tech: '• Full cycle stress testing\n• Battery voltage drop analysis', 
         link: null 
     }
