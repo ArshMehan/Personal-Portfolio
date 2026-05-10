@@ -1,4 +1,4 @@
-const projects = [
+const js_projects = [
     { 
         id: 'itd-v1', 
         title: 'Into the Deep V1', 
