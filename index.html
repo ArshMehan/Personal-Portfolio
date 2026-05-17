@@ -116,10 +116,9 @@
         /* --- Project Grid Systems --- */
         .grid { display: grid; gap: 30px; transition: all 0.3s ease; }
         
-        /* Forces highlighted projects into a single clean column layout */
         .grid.mode-highlights {
             grid-template-columns: 1fr;
-            max-width: 800px; /* Centers the single column structurally */
+            max-width: 800px; 
             margin: 0 auto;
         }
         .grid.mode-all {
@@ -145,7 +144,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         
-        /* Adjust image heights dynamically */
         .grid.mode-highlights .card img { height: 400px; }
         .grid.mode-all .card img { height: 210px; }
         
