@@ -30,7 +30,7 @@ const projects = [
         id: 'ff-practice', 
         title: 'FF Practice Bot', 
         tag: 'Prototyping', 
-        img: 'Pictures/Screenshot 2026-04-18 224554.png', 
+        img: 'Pictures/Screenshot 2026-04-20 223506.png', // Swapped with Freight Frenzy Robot
         desc: 'Platform for coaxial turret and slide integration research.', 
         tech: '• 5-DOF outtake\n• 6-wheel tank drive.', 
         link: null 
@@ -111,7 +111,7 @@ const projects = [
         id: 'ff-foundation', 
         title: 'Freight Frenzy Robot', 
         tag: 'Foundational', 
-        img: 'Pictures/Screenshot 2026-04-20 223506.png', 
+        img: 'Pictures/Screenshot 2026-04-18 224554.png', // Swapped with FF Practice Bot
         desc: 'Inaugural CAD project establishing core competencies.', 
         tech: '• Holonomic drivetrain kinematics\n• OpenCV vision basics.', 
         link: null 
