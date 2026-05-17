@@ -116,11 +116,15 @@
         /* --- Project Grid Systems --- */
         .grid { display: grid; gap: 30px; transition: all 0.3s ease; }
         
+        /* Forces highlighted projects into a single clean column layout */
         .grid.mode-highlights {
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            grid-template-columns: 1fr;
+            max-width: 800px; /* Centers the single column structurally */
+            margin: 0 auto;
         }
         .grid.mode-all {
             grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            max-width: 1100px;
         }
 
         .card { 
@@ -141,7 +145,8 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         
-        .grid.mode-highlights .card img { height: 320px; }
+        /* Adjust image heights dynamically */
+        .grid.mode-highlights .card img { height: 400px; }
         .grid.mode-all .card img { height: 210px; }
         
         .card img { width: 100%; object-fit: cover; background: #1e293b; transition: height 0.3s ease; }
@@ -149,17 +154,17 @@
         
         .card h3 {
             margin: 10px 0 0; 
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             white-space: normal;
             word-break: break-word;
         }
 
         .card .project-desc {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             margin-top: 12px;
             margin-bottom: 0;
-            line-height: 1.5;
+            line-height: 1.6;
             white-space: normal;
             word-break: break-word;
         }
@@ -205,7 +210,7 @@
             .hero-text h1 { font-size: 3.5rem; }
             .hero-text h2 { font-size: 1.8rem; }
             .hero-text p { margin: 10px auto; font-size: 1.1rem; }
-            .grid.mode-highlights { grid-template-columns: 1fr; }
+            .grid.mode-highlights .card img { height: 260px; }
         }
     </style>
 </head>
@@ -224,7 +229,7 @@
             <p>High Schooler at West Windsor Plainsboro High School North</p>
         </div>
         <div class="hero-image">
-            <img src="Headshot purple tie.jpg" alt="Arsh Mehan headshot">
+            <img src="Pictures/Headshot purple tie.jpg" alt="Arsh Mehan headshot">
         </div>
     </section>
 
