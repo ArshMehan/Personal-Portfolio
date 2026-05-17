@@ -7,7 +7,7 @@ const projects = [
         desc: 'Mass centralization study prioritizing lower center of gravity.', 
         tech: '• 8-motor internal housing\n• Low-profile clearance geometry.', 
         link: null,
-        highlight: true // Featured on Home Page
+        highlight: true
     },
     { 
         id: 'decode-v1', 
@@ -57,7 +57,7 @@ const projects = [
         desc: 'Flagship assembly for the 2026 season featuring a virtual four-bar linkage.', 
         tech: '• Virtual four-bar linkage\n• Internal wire management\n• High-torque climbing drive', 
         link: 'https://cad.onshape.com/documents/500e0b556027f584a0163ccc/w/6ee5606072da4702d9095a64/e/5865db44d45624407bc74789',
-        highlight: true // Featured on Home Page
+        highlight: true
     },
     { 
         id: 'itd-v2', 
@@ -97,7 +97,7 @@ const projects = [
         desc: 'Master-sketching platform for coaxial swerve pod kinematics.', 
         tech: '• Concentric shaft study\n• Custom idler belt paths.', 
         link: 'https://cad.onshape.com/documents/a5c8fcac7ec2f36807091e62/w/d628b2deadbf7ddc49ca9853/e/1167eec7910b8e92006cde84',
-        highlight: true // Featured on Home Page
+        highlight: true
     },
     { 
         id: 'diff-swerve', 
