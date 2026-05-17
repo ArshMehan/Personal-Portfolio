@@ -3,7 +3,7 @@ const projects = [
         id: 'decode-v2', 
         title: 'Decode Robot V2', 
         tag: 'Optimization', 
-        img: 'Pictures/Screenshot 2026-04-20 230958.png', 
+        img: 'Pictures/decode auto.gif', 
         desc: 'Mass centralization study prioritizing lower center of gravity.', 
         tech: '• 8-motor internal housing\n• Low-profile clearance geometry.', 
         link: null 
@@ -30,7 +30,7 @@ const projects = [
         id: 'ff-practice', 
         title: 'FF Practice Bot', 
         tag: 'Prototyping', 
-        img: 'Pictures/Screenshot 2026-04-20 223506.png', // Swapped with Freight Frenzy Robot
+        img: 'Pictures/Screenshot 2026-04-20 223506.png', 
         desc: 'Platform for coaxial turret and slide integration research.', 
         tech: '• 5-DOF outtake\n• 6-wheel tank drive.', 
         link: null 
@@ -48,7 +48,7 @@ const projects = [
         id: 'itd-v3', 
         title: 'Into the Deep V3', 
         tag: 'Flagship Build', 
-        img: 'Pictures/Screenshot 2026-04-20 202435.png', 
+        img: 'Pictures/storm.gif', // Updated thumbnail to use storm.gif
         desc: 'Flagship assembly for the 2026 season featuring a virtual four-bar linkage.', 
         tech: '• Virtual four-bar linkage\n• Internal wire management\n• High-torque climbing drive', 
         link: 'https://cad.onshape.com/documents/500e0b556027f584a0163ccc/w/6ee5606072da4702d9095a64/e/5865db44d45624407bc74789' 
@@ -61,6 +61,15 @@ const projects = [
         desc: 'Study on pitching linear extensions to maximize reach.', 
         tech: '• 6-DOF system\n• 3D-line stringing path analysis.', 
         link: 'https://cad.onshape.com/documents/acfcfb5e789f9d1567fe2565/w/0edabab2052a78754d798648/e/5b55488c01ab4972398a8935' 
+    },
+    { 
+        id: 'itd-v1', 
+        title: 'Into the Deep V1', 
+        tag: 'Linkage Analysis', 
+        img: 'Pictures/itd dr4b smol.gif', 
+        desc: 'Double Reverse Four-Bar mechanism using overcenter linkages.', 
+        tech: '• Optimized lifting torque\n• Active pivoting intake.', 
+        link: null 
     },
     { 
         id: 'locking-mecanum', 
@@ -111,7 +120,7 @@ const projects = [
         id: 'ff-foundation', 
         title: 'Freight Frenzy Robot', 
         tag: 'Foundational', 
-        img: 'Pictures/Screenshot 2026-04-18 224554.png', // Swapped with FF Practice Bot
+        img: 'Pictures/Screenshot 2026-04-18 224554.png', 
         desc: 'Inaugural CAD project establishing core competencies.', 
         tech: '• Holonomic drivetrain kinematics\n• OpenCV vision basics.', 
         link: null 
