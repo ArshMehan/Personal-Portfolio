@@ -5,90 +5,333 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arsh Mehan | Engineering & Robotics Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root { 
+            --primary: #3b82f6; 
+            --dark: #020617; 
+            --surface: #0f172a; 
+            --border: #1e293b; 
+            --text-main: #f8fafc; 
+            --text-muted: #94a3b8; 
+        }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            background: var(--dark); 
+            color: var(--text-main); 
+            line-height: 1.6; 
+        }
+        
+        nav { 
+            background: var(--surface); 
+            padding: 1rem 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            border-bottom: 1px solid var(--border);
+        }
+
+        .container { width: 90%; max-width: 1100px; margin: auto; padding: 20px 0 60px; }
+        
+        .hero-about {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            padding: 120px 0;
+            text-align: left;
+        }
+
+        .hero-text { flex: 1; }
+        .hero-text h1 { 
+            font-size: 5rem; 
+            font-weight: 800; 
+            margin: 0; 
+            letter-spacing: -2.5px;
+            color: var(--text-main);
+            line-height: 1;
+        }
+        .hero-text h2 { 
+            font-size: 2.2rem; 
+            font-weight: 600; 
+            margin: 25px 0 15px; 
+            color: var(--primary);
+        }
+        .hero-text p { 
+            font-size: 1.25rem; 
+            color: var(--text-muted); 
+            margin-bottom: 0;
+            max-width: 600px;
+            line-height: 1.5;
+        }
+
+        .hero-image {
+            width: 400px; 
+            height: 400px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--border);
+            flex-shrink: 0;
+            background-color: #000;
+            box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);
+        }
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            transform: scale(0.95); 
+            transform-origin: bottom center;
+            object-fit: contain;
+            object-position: center bottom;
+        }
+
+        /* --- Clickable Section Header --- */
+        .section-headline {
+            font-size: 2rem; 
+            margin-bottom: 10px; 
+            padding-top: 40px; 
+            border-top: 1px solid var(--border);
+            cursor: pointer;
+            display: inline-block;
+            transition: color 0.2s ease;
+        }
+        .section-headline:hover {
+            color: var(--primary);
+        }
+        .section-sub {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 40px;
+            margin-top: 0;
+        }
+        .section-sub span {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* --- Dynamic Project Grid Formats --- */
+        .grid { display: grid; gap: 30px; transition: all 0.3s ease; }
+        
+        /* Highlight View Layout (Fewer, larger items) */
+        .grid.mode-highlights {
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        }
+        /* Full View Layout (Compact grid for all items) */
+        .grid.mode-all {
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+        }
+
+        .card { 
+            background: var(--surface); 
+            border-radius: 16px; 
+            overflow: hidden; 
+            cursor: pointer; 
+            border: 1px solid var(--border); 
+            transition: 0.3s; 
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover { 
+            transform: translateY(-8px); 
+            border-color: var(--primary); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        /* Dynamically scales image heights based on highlight format */
+        .grid.mode-highlights .card img { height: 320px; }
+        .grid.mode-all .card img { height: 210px; }
+        
+        .card img { width: 100%; object-fit: cover; background: #1e293b; transition: height 0.3s ease; }
+        .card-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        
+        .card .project-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 12px;
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        .tag { 
+            background: rgba(59, 130, 246, 0.1); 
+            color: var(--primary); 
+            padding: 4px 10px; 
+            border-radius: 20px; 
+            font-size: 0.75rem; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            margin-bottom: 10px; 
+            display: inline-block; 
+            align-self: flex-start;
+        }
+
+        footer { 
+            background: var(--surface); 
+            padding: 60px 5%; 
+            margin-top: 100px; 
+            text-align: center; 
+            border-top: 1px solid var(--border);
+        }
+
+        .project-view { 
+            display: none; 
+            position: fixed; 
+            top: 0; left: 0; width: 100%; height: 100%; 
+            background: var(--dark); 
+            z-index: 2000; 
+            overflow-y: auto; 
+        }
+        .project-view.active { display: block; }
+        .back-nav { background: var(--surface); padding: 15px 5%; position: sticky; top: 0; border-bottom: 1px solid var(--border); z-index: 2001; }
+        .back-btn { background: var(--primary); color: white; border: none; padding: 10px 24px; border-radius: 8px; cursor: pointer; font-weight: 600; }
+        .detail-header img { width: 100%; max-height: 550px; object-fit: contain; background: #000; display: block; }
+        .detail-body { max-width: 900px; margin: auto; padding: 50px 20px; }
+
+        @media (max-width: 900px) {
+            .hero-about { flex-direction: column-reverse; text-align: center; padding: 60px 0; }
+            .hero-image { width: 280px; height: 280px; }
+            .hero-text h1 { font-size: 3.5rem; }
+            .hero-text h2 { font-size: 1.8rem; }
+            .hero-text p { margin: 10px auto; font-size: 1.1rem; }
+            .grid.mode-highlights { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
 <nav>
-    <div class="nav-logo">ARSH MEHAN</div>
-    <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-    </div>
+    <div style="font-weight: 800; font-size: 1.2rem; color: var(--text-main);">ARSH MEHAN</div>
+    <div style="font-weight: 500; color: var(--text-muted); font-size: 0.9rem;">Plainsboro, NJ • 2026</div>
 </nav>
 
 <div class="container">
-    <section id="about" class="hero-about">
+    <section class="hero-about">
         <div class="hero-text">
             <h1>Arsh Mehan</h1>
             <h2>Mechanical Designer from Plainsboro, New Jersey</h2>
             <p>High Schooler at West Windsor Plainsboro High School North</p>
         </div>
         <div class="hero-image">
-            <img src="Pictures/Headshot purple tie.jpg" alt="Arsh Mehan">
+            <img src="Headshot purple tie.jpg" alt="Arsh Mehan headshot">
         </div>
     </section>
 
-    <h2 id="projects" class="section-title">Projects</h2>
-    <div class="grid" id="project-list"></div>
-
-    <h2 id="experience" class="section-title">Experience & Skills</h2>
-    <div class="grid">
-        <div>
-            <h3 class="column-title">Experience</h3>
-            <ul class="list-muted">
-                <li><strong>Design Lead, FTC Team 14481</strong> Mechanical design lead for "Don't Blink".</li>
-                <li><strong>Orchestral Violist</strong> Philadelphia Youth Orchestra & YOCJ member.</li>
-            </ul>
-        </div>
-        <div>
-            <h3 class="column-title">Technical Skills</h3>
-            <div class="skill-container">
-                <span class="skill-tag">Onshape CAD</span>
-                <span class="skill-tag">3D Printing</span>
-                <span class="skill-tag">Mechanical Analysis</span>
-                <span class="skill-tag">Java (FTC)</span>
-                <span class="skill-tag">Web Development</span>
-            </div>
-        </div>
-        <div>
-            <h3 class="column-title">Awards</h3>
-            <ul class="list-muted">
-                <li><strong>Inspire Award 2nd Place</strong> FTC World Championship 2025</li>
-                <li><strong>Presidential Service Award Gold</strong> 250+ Hours of service.</li>
-            </ul>
-        </div>
-    </div>
+    <h2 id="projects-headline" class="section-headline" onclick="toggleGalleryView()">Technical Logs</h2>
+    <p id="projects-sub" class="section-sub">Showing featured builds. Click the headline or 
+       <span onclick="toggleGalleryView()">click here to view all logs</span>.
+    </p>
+    
+    <div class="grid mode-highlights" id="project-list"></div>
 </div>
 
 <footer>
-    <div class="container">
-        <p>&copy; 2026 Arsh Mehan. Built with code and CAD precision.</p>
-        <a href="mailto:arshmehan@gmail.com" class="footer-link">Email Me</a>
+    <p style="color: var(--text-muted);">&copy; 2026 Arsh Mehan. Built with code and CAD precision.</p>
+    <div style="margin-top: 20px;">
+        <a href="mailto:arshmehan@gmail.com" style="color: var(--primary); text-decoration: none; margin: 0 15px;">Email</a>
+        <a href="tel:7329159724" style="color: var(--primary); text-decoration: none; margin: 0 15px;">Phone</a>
     </div>
 </footer>
 
 <div id="project-page" class="project-view">
-    <div class="back-nav"><button class="back-btn" onclick="goBack()">← Back to Projects</button></div>
-    <div class="slider-container">
-        <button class="slider-control prev" onclick="manualMove(-1)">&#10094;</button>
-        <div id="slider-content"></div>
-        <button class="slider-control next" onclick="manualMove(1)">&#10095;</button>
-    </div>
+    <div class="back-nav"><button class="back-btn" onclick="goBack()">← Back to Portfolio</button></div>
+    <div class="detail-header"><img id="detail-img" src=""></div>
     <div class="detail-body">
         <span id="detail-tag" class="tag"></span>
-        <h1 id="detail-title"></h1>
-        <p id="detail-desc"></p>
-        <div class="tech-box">
-            <h4>Technical Highlights</h4>
-            <p id="detail-tech" style="white-space: pre-line;"></p>
+        <h1 id="detail-title" style="font-size: 2.8rem; margin: 10px 0;"></h1>
+        <p id="detail-desc" style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 30px;"></p>
+        <div style="background: var(--surface); padding: 30px; border-radius: 16px; border: 1px solid var(--border);">
+            <h4 style="margin-top: 0; text-transform: uppercase; font-size: 0.8rem; color: var(--primary); letter-spacing: 1px;">Technical Highlights</h4>
+            <p id="detail-tech" style="white-space: pre-line; margin-bottom: 0; line-height: 1.8;"></p>
         </div>
-        <div id="cad-link-area" style="margin-top: 30px;"></div>
+        <div id="cad-link-area" style="margin-top: 40px;"></div>
     </div>
 </div>
 
 <script src="js/projects.js"></script>
-<script src="js/main.js"></script>
+<script>
+    let showAll = false; // Controls state machine
+
+    function renderGallery() {
+        const grid = document.getElementById('project-list');
+        const subtext = document.getElementById('projects-sub');
+        grid.innerHTML = '';
+
+        if (showAll) {
+            // Full View State
+            grid.className = "grid mode-all";
+            subtext.innerHTML = `Showing all ${projects.length} development logs. <span onclick="toggleGalleryView()">Collapse to featured builds</span>.`;
+            
+            projects.forEach(p => {
+                createCard(p, grid, false);
+            });
+        } else {
+            // Highlights View State
+            grid.className = "grid mode-highlights";
+            subtext.innerHTML = `Showing featured flagship builds. Click the headline or <span onclick="toggleGalleryView()">view all ${projects.length} logs</span>.`;
+            
+            projects.forEach(p => {
+                if (p.highlight) {
+                    createCard(p, grid, true);
+                }
+            });
+        }
+    }
+
+    function createCard(project, targetGrid, includeDescription) {
+        const card = document.createElement('div');
+        card.className = 'card';
+        
+        let cardMarkup = `<img src="${project.img}">
+                          <div class="card-content">
+                             <span class="tag">${project.tag}</span>
+                             <h3 style="margin:10px 0 0; font-size:1.4rem;">${project.title}</h3>`;
+        
+        // Adds the description underneath the text if it is in the home page highlight mode
+        if (includeDescription) {
+            cardMarkup += `<p class="project-desc">${project.desc}</p>`;
+        }
+        
+        cardMarkup += `</div>`;
+        card.innerHTML = cardMarkup;
+        card.onclick = () => navigateTo(project.id);
+        targetGrid.appendChild(card);
+    }
+
+    function toggleGalleryView() {
+        showAll = !showAll;
+        renderGallery();
+        // Soft focus adjustment back up to header when closing
+        if(!showAll) {
+            document.getElementById('projects-headline').scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
+    function navigateTo(id) {
+        const p = projects.find(proj => proj.id === id);
+        if (!p) return;
+        document.getElementById('detail-title').innerText = p.title;
+        document.getElementById('detail-img').src = p.img;
+        document.getElementById('detail-tag').innerText = p.tag;
+        document.getElementById('detail-desc').innerText = p.desc;
+        document.getElementById('detail-tech').innerText = p.tech;
+        const linkArea = document.getElementById('cad-link-area');
+        linkArea.innerHTML = p.link ? `<a href="${p.link}" target="_blank" style="color:var(--primary); font-weight:700; text-decoration:none; border: 1px solid var(--primary); padding: 10px 20px; border-radius: 6px;">View Onshape CAD →</a>` : '';
+        document.getElementById('project-page').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function goBack() {
+        document.getElementById('project-page').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Initialize display on initial script mount
+    renderGallery();
+</script>
 </body>
 </html>
