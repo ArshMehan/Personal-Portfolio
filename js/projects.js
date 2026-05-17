@@ -77,7 +77,7 @@ const projects = [
         desc: 'Double Reverse Four-Bar mechanism using overcenter linkages.', 
         tech: '• Optimized lifting torque\n• Active pivoting intake.', 
         link: null,
-        highlight: true // Now highlighted on the home page
+        highlight: true
     },
     { 
         id: 'locking-mecanum', 
@@ -97,7 +97,7 @@ const projects = [
         desc: 'Master-sketching platform for coaxial swerve pod kinematics.', 
         tech: '• Concentric shaft study\n• Custom idler belt paths.', 
         link: 'https://cad.onshape.com/documents/a5c8fcac7ec2f36807091e62/w/d628b2deadbf7ddc49ca9853/e/1167eec7910b8e92006cde84',
-        highlight: false // Removed from home page highlights
+        highlight: false
     },
     { 
         id: 'diff-swerve', 
@@ -113,11 +113,11 @@ const projects = [
         id: 'centerstage', 
         title: 'Centerstage Robot', 
         tag: 'Competitive', 
-        img: 'Pictures/Screenshot 2026-04-19 143825.png', 
+        img: 'Pictures/RIP CS auto path.gif', // Updated to the new auto path GIF
         desc: 'Robot build utilizing professional CNC-routed fabrication.', 
         tech: '• CNC-routed components\n• 3-DOF arm integration.', 
         link: null,
-        highlight: false
+        highlight: true // Added to home page highlights
     },
     { 
         id: 'powerplay', 
