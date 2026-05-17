@@ -77,7 +77,7 @@ const projects = [
         desc: 'Double Reverse Four-Bar mechanism using overcenter linkages.', 
         tech: '• Optimized lifting torque\n• Active pivoting intake.', 
         link: null,
-        highlight: false
+        highlight: true // Now highlighted on the home page
     },
     { 
         id: 'locking-mecanum', 
@@ -97,7 +97,7 @@ const projects = [
         desc: 'Master-sketching platform for coaxial swerve pod kinematics.', 
         tech: '• Concentric shaft study\n• Custom idler belt paths.', 
         link: 'https://cad.onshape.com/documents/a5c8fcac7ec2f36807091e62/w/d628b2deadbf7ddc49ca9853/e/1167eec7910b8e92006cde84',
-        highlight: true
+        highlight: false // Removed from home page highlights
     },
     { 
         id: 'diff-swerve', 
