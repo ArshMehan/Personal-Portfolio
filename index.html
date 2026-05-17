@@ -88,7 +88,6 @@
             object-position: center bottom;
         }
 
-        /* --- Clickable Section Header --- */
         .section-headline {
             font-size: 2rem; 
             margin-bottom: 10px; 
@@ -114,14 +113,12 @@
             cursor: pointer;
         }
 
-        /* --- Dynamic Project Grid Formats --- */
+        /* --- Project Grid Systems --- */
         .grid { display: grid; gap: 30px; transition: all 0.3s ease; }
         
-        /* Highlight View Layout (Fewer, larger items) */
         .grid.mode-highlights {
             grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
         }
-        /* Full View Layout (Compact grid for all items) */
         .grid.mode-all {
             grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
         }
@@ -135,6 +132,8 @@
             transition: 0.3s; 
             display: flex;
             flex-direction: column;
+            width: 100%;
+            box-sizing: border-box;
         }
         .card:hover { 
             transform: translateY(-8px); 
@@ -142,19 +141,27 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         
-        /* Dynamically scales image heights based on highlight format */
         .grid.mode-highlights .card img { height: 320px; }
         .grid.mode-all .card img { height: 210px; }
         
         .card img { width: 100%; object-fit: cover; background: #1e293b; transition: height 0.3s ease; }
         .card-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
         
+        .card h3 {
+            margin: 10px 0 0; 
+            font-size: 1.4rem;
+            white-space: normal;
+            word-break: break-word;
+        }
+
         .card .project-desc {
             color: var(--text-muted);
             font-size: 0.95rem;
             margin-top: 12px;
             margin-bottom: 0;
             line-height: 1.5;
+            white-space: normal;
+            word-break: break-word;
         }
 
         .tag { 
@@ -254,7 +261,7 @@
 
 <script src="js/projects.js"></script>
 <script>
-    let showAll = false; // Controls state machine
+    let showAll = false;
 
     function renderGallery() {
         const grid = document.getElementById('project-list');
@@ -262,7 +269,6 @@
         grid.innerHTML = '';
 
         if (showAll) {
-            // Full View State
             grid.className = "grid mode-all";
             subtext.innerHTML = `Showing all ${projects.length} development logs. <span onclick="toggleGalleryView()">Collapse to featured builds</span>.`;
             
@@ -270,7 +276,6 @@
                 createCard(p, grid, false);
             });
         } else {
-            // Highlights View State
             grid.className = "grid mode-highlights";
             subtext.innerHTML = `Showing featured flagship builds. Click the headline or <span onclick="toggleGalleryView()">view all ${projects.length} logs</span>.`;
             
@@ -286,12 +291,12 @@
         const card = document.createElement('div');
         card.className = 'card';
         
-        let cardMarkup = `<img src="${project.img}">
-                          <div class="card-content">
-                             <span class="tag">${project.tag}</span>
-                             <h3 style="margin:10px 0 0; font-size:1.4rem;">${project.title}</h3>`;
+        let cardMarkup = `
+            <img src="${project.img}">
+            <div class="card-content">
+                <span class="tag">${project.tag}</span>
+                <h3>${project.title}</h3>`;
         
-        // Adds the description underneath the text if it is in the home page highlight mode
         if (includeDescription) {
             cardMarkup += `<p class="project-desc">${project.desc}</p>`;
         }
@@ -305,7 +310,6 @@
     function toggleGalleryView() {
         showAll = !showAll;
         renderGallery();
-        // Soft focus adjustment back up to header when closing
         if(!showAll) {
             document.getElementById('projects-headline').scrollIntoView({ behavior: 'smooth' });
         }
@@ -330,7 +334,6 @@
         document.body.style.overflow = 'auto';
     }
 
-    // Initialize display on initial script mount
     renderGallery();
 </script>
 </body>
