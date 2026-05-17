@@ -109,6 +109,7 @@
         .section-sub span {
             color: var(--primary);
             font-weight: 600;
+            text-underline-offset: 4px;
             text-decoration: underline;
             cursor: pointer;
         }
@@ -177,7 +178,60 @@
             text-transform: uppercase; 
             margin-bottom: 10px; 
             display: inline-block; 
-            align-self: flex-start;
+            align-start: flex-start;
+        }
+
+        /* --- New Experience Layout Section Styles --- */
+        .xp-section {
+            margin-top: 60px;
+        }
+        .xp-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .xp-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+        }
+        .xp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .xp-title h3 {
+            font-size: 1.4rem;
+            margin: 0;
+            color: var(--text-main);
+        }
+        .xp-title p {
+            font-size: 1rem;
+            margin: 4px 0 0;
+            color: var(--primary);
+            font-weight: 500;
+        }
+        .xp-date {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            background: rgba(30, 41, 59, 0.5);
+            padding: 4px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+        .xp-details {
+            margin: 0;
+            padding-left: 20px;
+            color: var(--text-muted);
+        }
+        .xp-details li {
+            margin-bottom: 8px;
+            line-height: 1.5;
         }
 
         footer { 
@@ -209,6 +263,7 @@
             .hero-text h2 { font-size: 1.8rem; }
             .hero-text p { margin: 10px auto; font-size: 1.1rem; }
             .grid.mode-highlights .card img { height: 260px; }
+            .xp-header { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
@@ -231,12 +286,63 @@
         </div>
     </section>
 
-    <h2 id="projects-headline" class="section-headline" onclick="toggleGalleryView()">Technical Logs</h2>
+    <h2 id="projects-headline" class="section-headline" onclick="toggleGalleryView()">Projects</h2>
     <p id="projects-sub" class="section-sub">Showing featured builds. Click the headline or 
        <span onclick="toggleGalleryView()">click here to view all logs</span>.
     </p>
     
     <div class="grid mode-highlights" id="project-list"></div>
+
+    <section class="xp-section">
+        <h2 class="section-headline" style="cursor: default; border-top: 1px solid var(--border); width: 100%;">Experience</h2>
+        <p class="section-sub" style="margin-bottom: 25px;">Engineering background and organizational leadership.</p>
+        
+        <div class="xp-timeline">
+            <div class="xp-item">
+                <div class="xp-header">
+                    <div class="xp-title">
+                        <h3>Mechanical Designer & Team Member</h3>
+                        <p>FIRST Tech Challenge (FTC Team 14481 Don't Blink)</p>
+                    </div>
+                    <div class="xp-date">2024 - Present</div>
+                </div>
+                <ul class="xp-details">
+                    <li>Led structural CAD synthesis using Onshape to manage complex component clearance assemblies.</li>
+                    <li>Designed virtual four-bar linkages, custom structural intake subsystems, and optimized planetary gear transmissions.</li>
+                    <li>Contributed to achieving 2nd Place for the prestigious Inspire Award at the FTC World Championship (2025).</li>
+                </ul>
+            </div>
+
+            <div class="xp-item">
+                <div class="xp-header">
+                    <div class="xp-title">
+                        <h3>Orchestral Violist</h3>
+                        <p>YOCJ Symphonic Orchestra & Philadelphia Youth Orchestra (PYO)</p>
+                    </div>
+                    <div class="xp-date">2024 - Present</div>
+                </div>
+                <ul class="xp-details">
+                    <li>Selected to the competitive Region High School Orchestra roster (2026).</li>
+                    <li>Participated in high-profile classical performance tours including a featured summer tour across Vienna and Salzburg, Austria.</li>
+                    <li>Collaborated in elite chamber ensembles demanding deep listening, continuous calibration, and precision execution.</li>
+                </ul>
+            </div>
+
+            <div class="xp-item">
+                <div class="xp-header">
+                    <div class="xp-title">
+                        <h3>Academic Competitor</h3>
+                        <p>Science Olympiad, Science Bowl, & Academic Decathlon</p>
+                    </div>
+                    <div class="xp-date">2024 - Present</div>
+                </div>
+                <ul class="xp-details">
+                    <li>Competed in advanced engineering application challenges including Science Olympiad's "Mission Possible" and "Robot Tour" structures.</li>
+                    <li>Engaged in fast-paced STEM testing and application metrics for school division tryouts and invitationals.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 </div>
 
 <footer>
@@ -262,7 +368,7 @@
     </div>
 </div>
 
-<script src="js/projects.js?v=3"></script>
+<script src="js/projects.js?v=6"></script>
 <script>
     let showAll = false;
 
