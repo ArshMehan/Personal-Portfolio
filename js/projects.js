@@ -1,20 +1,20 @@
 const projects = [
     { 
-        id: 'itd-v3', 
-        title: 'Into the Deep V3', 
-        tag: 'Flagship Build', 
-        img: 'Pictures/Screenshot 2026-04-20 202435.png', 
-        desc: 'Flagship assembly for the 2026 season featuring a virtual four-bar linkage.', 
-        tech: '• Virtual four-bar linkage\n• Internal wire management\n• High-torque climbing drive', 
-        link: 'https://cad.onshape.com/documents/500e0b556027f584a0163ccc/w/6ee5606072da4702d9095a64/e/5865db44d45624407bc74789' 
-    },
-    { 
         id: 'decode-v2', 
         title: 'Decode Robot V2', 
         tag: 'Optimization', 
         img: 'Pictures/Screenshot 2026-04-20 230958.png', 
         desc: 'Mass centralization study prioritizing lower center of gravity.', 
         tech: '• 8-motor internal housing\n• Low-profile clearance geometry.', 
+        link: null 
+    },
+    { 
+        id: 'decode-v1', 
+        title: 'Decode Robot V1', 
+        tag: 'Modular Design', 
+        img: 'Pictures/Screenshot 2026-04-20 224836.png', 
+        desc: 'Modular architecture for rapid assembly and field service.', 
+        tech: '• Subsystem removal via 8 screws\n• Dual-intake integration.', 
         link: null 
     },
     { 
@@ -36,15 +36,6 @@ const projects = [
         link: null 
     },
     { 
-        id: 'decode-v1', 
-        title: 'Decode Robot V1', 
-        tag: 'Modular Design', 
-        img: 'Pictures/Screenshot 2026-04-20 224836.png', 
-        desc: 'Modular architecture for rapid assembly and field service.', 
-        tech: '• Subsystem removal via 8 screws\n• Dual-intake integration.', 
-        link: null 
-    },
-    { 
         id: 'super-modular', 
         title: 'Super Modular Drivetrain', 
         tag: 'Efficiency', 
@@ -54,6 +45,15 @@ const projects = [
         link: 'https://cad.onshape.com/documents/a762d78dceac9b2eadaac582/w/4a5e7dc5b1c5d9c9cf3f7ade/e/c9b695e9dc026b50b541b51a' 
     },
     { 
+        id: 'itd-v3', 
+        title: 'Into the Deep V3', 
+        tag: 'Flagship Build', 
+        img: 'Pictures/Screenshot 2026-04-20 202435.png', 
+        desc: 'Flagship assembly for the 2026 season featuring a virtual four-bar linkage.', 
+        tech: '• Virtual four-bar linkage\n• Internal wire management\n• High-torque climbing drive', 
+        link: 'https://cad.onshape.com/documents/500e0b556027f584a0163ccc/w/6ee5606072da4702d9095a64/e/5865db44d45624407bc74789' 
+    },
+    { 
         id: 'itd-v2', 
         title: 'Into the Deep V2', 
         tag: 'Kinematics', 
@@ -61,15 +61,6 @@ const projects = [
         desc: 'Study on pitching linear extensions to maximize reach.', 
         tech: '• 6-DOF system\n• 3D-line stringing path analysis.', 
         link: 'https://cad.onshape.com/documents/acfcfb5e789f9d1567fe2565/w/0edabab2052a78754d798648/e/5b55488c01ab4972398a8935' 
-    },
-    { 
-        id: 'itd-v1', 
-        title: 'Into the Deep V1', 
-        tag: 'Linkage Analysis', 
-        img: 'Pictures/Screenshot 2026-04-20 200959.png', 
-        desc: 'Double Reverse Four-Bar mechanism using overcenter linkages.', 
-        tech: '• Optimized lifting torque\n• Active pivoting intake.', 
-        link: null 
     },
     { 
         id: 'locking-mecanum', 
