@@ -13,7 +13,7 @@ const projects = [
         id: 'decode-v1', 
         title: 'Decode Robot V1', 
         tag: 'Modular Design', 
-        img: 'Pictures/Screenshot 2026-04-20 224836.png', 
+        img: 'Pictures/IMG_3957.jpg', // Updated to the new thumbnail image
         desc: 'Modular architecture for rapid assembly and field service.', 
         tech: '• Subsystem removal via 8 screws\n• Dual-intake integration.', 
         link: null,
@@ -113,11 +113,11 @@ const projects = [
         id: 'centerstage', 
         title: 'Centerstage Robot', 
         tag: 'Competitive', 
-        img: 'Pictures/RIP CS auto path.gif', // Updated to the new auto path GIF
+        img: 'Pictures/RIP CS auto path.gif', 
         desc: 'Robot build utilizing professional CNC-routed fabrication.', 
         tech: '• CNC-routed components\n• 3-DOF arm integration.', 
         link: null,
-        highlight: true // Added to home page highlights
+        highlight: true
     },
     { 
         id: 'powerplay', 
